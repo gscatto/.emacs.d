@@ -89,3 +89,8 @@
 	  completion-category-defaults nil
 	  completion-category-overrides '((file (styles partial-completion)))))
 #+end_src
+* Install Marginalia
+#+begin_src elisp
+  (use-package marginalia
+    :config (marginalia-mode))
+#+end_src
