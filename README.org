@@ -10,6 +10,10 @@
   (add-hook 'after-save-hook 'gs/refresh-emacs-configuration)
 #+end_src
 
+* Enable lexical binding
+#+begin_src elisp
+  ;; -*- lexical-binding: t; -*-
+#+end_src
 * Do not make a backup of a file the first time it is saved
 #+begin_src elisp
   (setq make-backup-files nil)
