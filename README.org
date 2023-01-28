@@ -288,3 +288,9 @@
       (corfu-mode 1)))
   (add-hook 'minibuffer-setup-hook #'gs/enable-corfu-in-the-minibuffer)
 #+end_src
+* Set up ~org-mode~
+#+begin_src elisp
+  (use-package org
+    :straight (:type built-in)
+    :hook ((org-mode . visual-line-mode)))
+#+end_src
