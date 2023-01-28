@@ -24,10 +24,10 @@
 #+end_src
 * Hide the tool bar, the menu bar and the scroll bar on all frames
 #+begin_src elisp
-  (tool-bar-mode 0)
   (menu-bar-mode 0)
   (when (display-graphic-p)
-    (scroll-bar-mode 0))
+    (scroll-bar-mode 0)
+    (tool-bar-mode 0))
 #+end_src
 
 * Add ~straight.el~
