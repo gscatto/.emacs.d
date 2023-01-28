@@ -9,3 +9,23 @@
 	     (load-file user-init-file))))
   (add-hook 'after-save-hook 'gs/refresh-emacs-configuration)
 #+end_src
+
+* Do not make a backup of a file the first time it is saved
+#+begin_src elisp
+  (setq make-backup-files nil)
+#+end_src
+* Do not auto-saving of every file-visiting buffer
+#+begin_src elisp
+  (setq auto-save-default nil)
+#+end_src
+* Do not ring the bell
+#+begin_src elisp
+  (setq ring-bell-function 'ignore)
+#+end_src
+* Hide the tool bar, the menu bar and the scroll bar on all frames
+#+begin_src elisp
+  (tool-bar-mode 0)
+  (menu-bar-mode 0)
+  (when (display-graphic-p)
+    (scroll-bar-mode 0))
+#+end_src
