@@ -1,0 +1,11 @@
+# -*- gs/is-user-init-file: t; -*-
+#+startup: fold
+#+property: header-args :tangle (symbol-value 'user-init-file)
+* Refresh Emacs configuration after save
+#+begin_src elisp
+  (defun gs/refresh-emacs-configuration ()
+    (when (bound-and-true-p gs/is-user-init-file)
+      (progn (org-babel-tangle)
+	     (load-file user-init-file))))
+  (add-hook 'after-save-hook 'gs/refresh-emacs-configuration)
+#+end_src
