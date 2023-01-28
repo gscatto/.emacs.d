@@ -292,5 +292,6 @@
 #+begin_src elisp
   (use-package org
     :straight (:type built-in)
-    :hook ((org-mode . visual-line-mode)))
+    :hook ((org-mode . visual-line-mode)
+	   (org-mode . variable-pitch-mode)))
 #+end_src
