@@ -290,8 +290,10 @@
 #+end_src
 * Set up ~org-mode~
 #+begin_src elisp
-  (use-package org
-    :straight (:type built-in)
-    :hook ((org-mode . visual-line-mode)
-	   (org-mode . variable-pitch-mode)))
+    (use-package org
+      :straight (:type built-in)
+      :hook ((org-mode . visual-line-mode)
+	     (org-mode . variable-pitch-mode))
+      :custom ((org-hide-emphasis-markers t)))
+#+end_src
 #+end_src
