@@ -104,3 +104,7 @@
 #+begin_src elisp
   (recentf-mode 1)
 #+end_src
+* Automatically save place in each file
+#+begin_src elisp
+  (save-place-mode 1)
+#+end_src
