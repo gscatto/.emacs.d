@@ -108,3 +108,7 @@
 #+begin_src elisp
   (save-place-mode 1)
 #+end_src
+* Always answer with ~y/n~
+#+begin_src elisp
+(defalias 'yes-or-no-p 'y-or-n-p)
+#+end_src
