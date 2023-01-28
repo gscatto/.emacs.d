@@ -29,3 +29,28 @@
   (when (display-graphic-p)
     (scroll-bar-mode 0))
 #+end_src
+
+* Add ~straight.el~
+** Bootstrap it
+#+begin_src elisp
+  (defvar bootstrap-version)
+  (let ((bootstrap-file
+	 (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+	(bootstrap-version 6))
+    (unless (file-exists-p bootstrap-file)
+      (with-current-buffer
+	  (url-retrieve-synchronously
+	   "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+	   'silent 'inhibit-cookies)
+	(goto-char (point-max))
+	(eval-print-last-sexp)))
+    (load bootstrap-file nil 'nomessage))
+#+end_src
+** The ~use-package~ form invokes ~straight.el~ to install the package, unless otherwise specified
+#+begin_src elisp
+  (setq straight-use-package-by-default t)
+#+end_src
+** Prevent ~package.el~ loading packages prior to their init-file loading
+#+begin_src elisp :tangle early-init.el
+  (setq package-enable-at-startup nil)
+#+end_src
