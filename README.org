@@ -70,3 +70,9 @@
     :config
     (gcmh-mode 1))
 #+end_src
+* Install Magit
+#+begin_src elisp
+  (use-package magit
+    :bind
+    (("C-c g" . magit-file-dispatch)))
+#+end_src
