@@ -296,4 +296,9 @@
 	     (org-mode . variable-pitch-mode))
       :custom ((org-hide-emphasis-markers t)))
 #+end_src
+
+* Install ~org-appear~
+#+begin_src elisp
+  (use-package org-appear
+    :hook org-mode)
 #+end_src
