@@ -14,6 +14,15 @@
 #+begin_src elisp
   ;; -*- lexical-binding: t; -*-
 #+end_src
+* Termux system defines ~TERMUX_VERSION~ environment variable
+#+begin_src elisp
+  (setq gs/is-termux (and (getenv "TERMUX_VERSION")))
+#+end_src
+* Set browser for Termux system
+#+begin_src elisp
+  (when gs/is-termux
+    (setq browse-url-browser-function 'browse-url-xdg-open))
+#+end_src
 * Do not make a backup of a file the first time it is saved
 #+begin_src elisp
   (setq make-backup-files nil)
