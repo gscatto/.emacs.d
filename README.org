@@ -236,3 +236,8 @@
     ;; (setq consult-project-function (lambda (_) (locate-dominating-file "." ".git")))
   )
   #+end_src
+
+* Cursor is a vertical bar
+#+begin_src elisp
+  (setq-default cursor-type 'bar)
+#+end_src
