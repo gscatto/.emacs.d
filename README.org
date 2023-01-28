@@ -76,3 +76,8 @@
     :bind
     (("C-c g" . magit-file-dispatch)))
 #+end_src
+* Install Vertico
+#+begin_src elisp
+  (use-package vertico
+    :config (vertico-mode))
+#+end_src
