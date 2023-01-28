@@ -81,3 +81,11 @@
   (use-package vertico
     :config (vertico-mode))
 #+end_src
+* Install Orderless
+#+begin_src elisp
+  (use-package orderless
+    :init
+    (setq completion-styles '(orderless basic)
+	  completion-category-defaults nil
+	  completion-category-overrides '((file (styles partial-completion)))))
+#+end_src
