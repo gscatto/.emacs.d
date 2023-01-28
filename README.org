@@ -59,3 +59,14 @@
 #+begin_src elisp
   (straight-use-package 'use-package)
 #+end_src
+
+* Display messages at start and end of garbage collection
+#+begin_src elisp
+  (setq garbage-collection-messages t)
+#+end_src
+* Install ~GCMH~
+#+begin_src elisp
+  (use-package gcmh
+    :config
+    (gcmh-mode 1))
+#+end_src
