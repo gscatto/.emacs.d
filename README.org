@@ -54,3 +54,8 @@
 #+begin_src elisp :tangle early-init.el
   (setq package-enable-at-startup nil)
 #+end_src
+
+* Install ~use-package.el~
+#+begin_src elisp
+  (straight-use-package 'use-package)
+#+end_src
