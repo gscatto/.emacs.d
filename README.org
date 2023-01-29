@@ -381,3 +381,20 @@
 #+begin_src elisp
   (use-package magit-annex)
 #+end_src
+* Install helper scripts in ~$HOME/bin~
+#+begin_src sh :tangle (concat (getenv "HOME") "/bin/,ec")
+  #!/bin/sh
+  emacsclient -c
+#+end_src
+#+begin_src sh :tangle (concat (getenv "HOME") "/bin/,ed")
+  #!/bin/sh
+  emacs --daemon
+#+end_src
+#+begin_src sh :tangle (concat (getenv "HOME") "/bin/,ek")
+  #!/bin/sh
+  emacsclient -e "(kill-emacs)"
+#+end_src
+#+begin_src sh :tangle (concat (getenv "HOME") "/bin/,e")
+  #!/bin/sh
+  ,ed && ,ec
+#+end_src
