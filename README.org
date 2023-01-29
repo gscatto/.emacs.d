@@ -328,7 +328,9 @@
       `(,(concat org-directory "/inbox")))
      (org-capture-templates
       `(("n" "Note" entry (file ,(concat "inbox/" gs/device-id ".org"))
-	 "* %?")))
+	 "* %?")
+	("l" "Link" entry (file ,(concat "inbox/" gs/device-id ".org"))
+	 "* %(org-cliplink-capture)")))
      (org-agenda-prefix-format
       '((agenda . " %i %?-12t% s")
 	(todo . " %i %-12:c")
@@ -358,4 +360,13 @@
     :hook visual-line-mode
     :custom ((visual-fill-column-width 80)
 	     (visual-fill-column-center-text t)))
+#+end_src
+* Install ~org-cliplink~
+#+begin_src elisp
+  (use-package org-cliplink)
+#+end_src
+
+* Require org-protocol
+#+begin_src elisp
+  (require 'org-protocol)
 #+end_src
