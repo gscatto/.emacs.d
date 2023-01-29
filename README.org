@@ -18,6 +18,12 @@
 #+begin_src elisp
   (setq gs/is-termux (and (getenv "TERMUX_VERSION")))
 #+end_src
+* Get device name from environment variable
+#+begin_src elisp
+  (setq gs/device-id (getenv "GS_DEVICE_ID"))
+  (unless gs/device-id
+    (error "Environment variable GS_DEVICE_ID has not been set"))
+#+end_src
 * Set browser for Termux system
 #+begin_src elisp
   (when gs/is-termux
@@ -297,13 +303,45 @@
       (corfu-mode 1)))
   (add-hook 'minibuffer-setup-hook #'gs/enable-corfu-in-the-minibuffer)
 #+end_src
+* Resolve symbolic links when visiting files
+#+begin_src elisp
+  (setq find-file-visit-truename t)
+#+end_src
 * Set up ~org-mode~
 #+begin_src elisp
-    (use-package org
-      :straight (:type built-in)
-      :hook ((org-mode . visual-line-mode)
-	     (org-mode . variable-pitch-mode))
-      :custom ((org-hide-emphasis-markers t)))
+  (use-package org
+    :straight (:type built-in)
+    :bind
+    (("C-c a" . org-agenda)
+     ("C-c c" . org-capture))
+    :hook
+    ((org-mode . visual-line-mode)
+     (org-mode . variable-pitch-mode))
+    :custom
+    ((org-hide-emphasis-markers t)
+     (org-outline-path-complete-in-steps nil)
+     (org-refile-allow-creating-parent-nodes 'confirm)
+     (org-refile-targets
+      `((,(concat org-directory "/projects.org") :maxlevel . 9)))
+     (org-agenda-hide-tags-regexp "^inbox$")
+     (org-agenda-files
+      `(,(concat org-directory "/inbox")))
+     (org-capture-templates
+      `(("n" "Note" entry (file ,(concat "inbox/" gs/device-id ".org"))
+	 "* %?")))
+     (org-agenda-prefix-format
+      '((agenda . " %i %?-12t% s")
+	(todo . " %i %-12:c")
+	(tags . " %i %-12:c")
+	(search . " %i %-12:c")))
+     (org-agenda-block-separator nil)
+     (org-agenda-custom-commands
+      `(("d" "Daily view"
+	 ((agenda ""
+		  ((org-agenda-span 'day)))
+	  (tags "inbox"
+		((org-agenda-prefix-format "  %?-12t% s")
+		 (org-agenda-overriding-header "Inbox")))))))))
 #+end_src
 
 * Install ~org-appear~
