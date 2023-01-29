@@ -341,7 +341,9 @@
 		  ((org-agenda-span 'day)))
 	  (tags "inbox"
 		((org-agenda-prefix-format "  %?-12t% s")
-		 (org-agenda-overriding-header "Inbox")))))))))
+		 (org-agenda-overriding-header "Inbox"))))))))
+    :config
+    (advice-add 'org-refile :after 'org-save-all-org-buffers))
 #+end_src
 
 * Install ~org-appear~
