@@ -329,7 +329,7 @@
      (org-capture-templates
       `(("n" "Note" entry (file ,(concat "inbox/" gs/device-id ".org"))
 	 "* %?")
-	("l" "Link" entry (file ,(concat "inbox/" gs/device-id ".org"))
+	("k" "Link from clipboard" entry (file ,(concat "inbox/" gs/device-id ".org"))
 	 "* %(org-cliplink-capture)")))
      (org-agenda-prefix-format
       '((agenda . " %i %?-12t% s")
