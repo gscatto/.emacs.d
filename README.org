@@ -377,3 +377,7 @@
     :config
     (require 'org-attach-git))
 #+end_src
+* Install magit-annex
+#+begin_src elisp
+  (use-package magit-annex)
+#+end_src
