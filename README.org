@@ -370,3 +370,10 @@
 #+begin_src elisp
   (require 'org-protocol)
 #+end_src
+
+* Install ~git-annex~
+#+begin_src elisp
+  (use-package git-annex
+    :config
+    (require 'org-attach-git))
+#+end_src
