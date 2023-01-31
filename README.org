@@ -380,20 +380,16 @@
   (use-package magit-annex)
 #+end_src
 * Install helper scripts in ~$HOME/bin~
-#+begin_src sh :tangle (concat (getenv "HOME") "/bin/,ec")
-  #!/bin/sh
+#+begin_src sh :shebang "#!/bin/sh" :tangle (concat (getenv "HOME") "/bin/,ec")
   emacsclient -c
 #+end_src
-#+begin_src sh :tangle (concat (getenv "HOME") "/bin/,ed")
-  #!/bin/sh
+#+begin_src sh :shebang "#!/bin/sh" :tangle (concat (getenv "HOME") "/bin/,ed")
   emacs --daemon
 #+end_src
-#+begin_src sh :tangle (concat (getenv "HOME") "/bin/,ek")
-  #!/bin/sh
+#+begin_src sh :shebang "#!/bin/sh" :tangle (concat (getenv "HOME") "/bin/,ek")
   emacsclient -e "(kill-emacs)"
 #+end_src
-#+begin_src sh :tangle (concat (getenv "HOME") "/bin/,e")
-  #!/bin/sh
+#+begin_src sh :shebang "#!/bin/sh" :tangle (concat (getenv "HOME") "/bin/,e")
   ,ed && ,ec
 #+end_src
 
@@ -415,7 +411,7 @@
 
 * Load ~modus-operandi~ theme
 #+begin_src elisp
-  (use-package modus-themes
+  (use-package modus-themes 
     :straight (:type git :host github :repo "protesilaos/modus-themes")
     :config
     (setq modus-themes-mixed-fonts t)
