@@ -412,3 +412,24 @@
     (org-roam-db-autosync-mode)
     (require 'org-roam-protocol))
 #+end_src
+
+* Load ~modus-operandi~ theme
+#+begin_src elisp
+  (use-package modus-themes
+    :straight (:type git :host github :repo "protesilaos/modus-themes")
+    :config
+    (setq modus-themes-mixed-fonts t)
+    (modus-themes--disable-themes)
+    (load-theme 'modus-operandi t))
+#+end_src
+* Install ~fontaine~
+#+begin_src elisp
+  (use-package fontaine
+    :config
+    (add-to-list 'fontaine-presets '(m2007j17g))
+    (add-to-list 'fontaine-presets '(mbp-di-giulio
+				     :default-height 180
+				     :default-weight semilight
+				     :bold-weight extrabold))
+    (fontaine-set-preset (intern gs/device-id)))
+#+end_src
