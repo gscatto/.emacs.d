@@ -349,12 +349,14 @@
 * Install ~org-appear~
 #+begin_src elisp
   (use-package org-appear
+    :demand t
     :hook org-mode)
 #+end_src
 
 * Install ~visual-fill-column~
 #+begin_src elisp
   (use-package visual-fill-column
+    :demand t
     :hook visual-line-mode
     :custom ((visual-fill-column-width 80)
 	     (visual-fill-column-center-text t)))
