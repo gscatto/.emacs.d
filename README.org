@@ -416,7 +416,9 @@
     :config
     (setq modus-themes-mixed-fonts t)
     (modus-themes--disable-themes)
-    (load-theme 'modus-operandi t))
+    (pcase (intern gs/device-id)
+      ('mbp-di-giulio (load-theme 'modus-operandi t))
+      ('m2007j17g (load-theme 'modus-vivendi t))))
 #+end_src
 * Install ~fontaine~
 #+begin_src elisp
