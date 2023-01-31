@@ -2,6 +2,7 @@ auto-save-list/
 bookmarks
 elpa/
 eshell/
+.org-id-locations
 org-roam.db
 places
 projects
