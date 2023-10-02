@@ -44,3 +44,6 @@
 
 ;; Maximize the Emacs frame on startup.
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
+
+(when (fboundp 'pixel-scroll-precision-mode)
+  (pixel-scroll-precision-mode t))
