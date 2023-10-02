@@ -97,3 +97,8 @@
   (global-corfu-mode t)
   :custom
   (completion-cycle-threshold 3))
+
+(use-package undo-tree
+  :config
+  (global-undo-tree-mode t)
+  (setq undo-tree-history-directory-alist `((".*" . ,(expand-file-name "tmp/undo-tree/" user-emacs-directory)))))
