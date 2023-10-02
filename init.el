@@ -102,3 +102,10 @@
   :config
   (global-undo-tree-mode t)
   (setq undo-tree-history-directory-alist `((".*" . ,(expand-file-name "tmp/undo-tree/" user-emacs-directory)))))
+
+(use-package volatile-highlights
+  :init
+  (volatile-highlights-mode t)
+  ;; undo-tree
+  (vhl/define-extension 'undo-tree 'undo-tree-yank 'undo-tree-move)
+  (vhl/install-extension 'undo-tree))
