@@ -5,3 +5,6 @@
 
 ;; Avoid polluting working directories with file backups.
 (setq backup-directory-alist `(("." . ,(expand-file-name "tmp/backups/" user-emacs-directory))))
+
+;; Remember recently edited files.
+(recentf-mode +1)
