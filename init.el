@@ -73,4 +73,6 @@
 ;; Typed text replaces the active selection.
 (delete-selection-mode t)
 
-(use-package magit)
+(use-package magit
+  :config
+  (add-hook 'after-save-hook 'magit-after-save-refresh-status t))
