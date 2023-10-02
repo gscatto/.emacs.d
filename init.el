@@ -86,3 +86,6 @@
   (diff-hl-show-hunk-mouse-mode t)
   :custom
   (diff-hl-show-staged-changes nil))
+
+;; Make the cursor a thin bar.
+(setq-default cursor-type 'bar)
