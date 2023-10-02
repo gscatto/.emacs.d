@@ -24,3 +24,10 @@
 ;; https://github.com/slotThe/vc-use-package
 (unless (package-installed-p 'vc-use-package)
   (package-vc-install "https://github.com/slotThe/vc-use-package"))
+
+(use-package vertico
+  :vc (vertico :url "https://github.com/minad/vertico"
+	       :lisp-dir "extensions/")
+  :config
+  (vertico-mode)
+  (vertico-reverse-mode))
