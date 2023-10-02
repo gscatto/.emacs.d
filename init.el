@@ -14,3 +14,6 @@
 
 ;; Prevent using UI dialogs for prompts.
 (setq use-dialog-box nil)
+
+;; Always use `y` or `n` for yes-no responses.
+(defalias 'yes-or-no-p 'y-or-n-p)
