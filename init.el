@@ -89,3 +89,5 @@
 
 ;; Make the cursor a thin bar.
 (setq-default cursor-type 'bar)
+
+(save-place-mode t)
