@@ -91,3 +91,9 @@
 (setq-default cursor-type 'bar)
 
 (save-place-mode t)
+
+(use-package corfu
+  :init
+  (global-corfu-mode t)
+  :custom
+  (completion-cycle-threshold 3))
