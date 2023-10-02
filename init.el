@@ -59,3 +59,6 @@
 
 ;; Typed text replaces the active selection.
 (delete-selection-mode t)
+
+(unless (package-installed-p 'magit)
+  (package-install 'magit))
