@@ -17,3 +17,6 @@
 
 ;; Always use `y` or `n` for yes-no responses.
 (defalias 'yes-or-no-p 'y-or-n-p)
+
+;; Automatically revert buffers for changed files.
+(global-auto-revert-mode +1)
