@@ -31,3 +31,9 @@
   :config
   (vertico-mode)
   (vertico-reverse-mode))
+
+(use-package orderless
+  :vc (orderless :url "https://github.com/oantolin/orderless")
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion)))))
