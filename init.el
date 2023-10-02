@@ -11,3 +11,6 @@
 
 ;; Remember minibuffer prompt history.
 (savehist-mode +1)
+
+;; Prevent using UI dialogs for prompts.
+(setq use-dialog-box nil)
