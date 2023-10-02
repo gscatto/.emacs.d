@@ -37,3 +37,7 @@
   :custom
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
+
+;; TAB first tries to indent the current line, and if the line was already
+;; indented, then try to complete the thing at point.
+(setq tab-always-indent 'complete)
