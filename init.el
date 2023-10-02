@@ -47,3 +47,12 @@
 
 (when (fboundp 'pixel-scroll-precision-mode)
   (pixel-scroll-precision-mode t))
+
+;; Display the current line number in the mode line.
+(line-number-mode t)
+
+;; Display the current column number in the mode line.
+(column-number-mode t)
+
+;; Display the buffer size in the mode line.
+(size-indication-mode t)
