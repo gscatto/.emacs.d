@@ -20,3 +20,7 @@
 
 ;; Automatically revert buffers for changed files.
 (global-auto-revert-mode +1)
+
+;; https://github.com/slotThe/vc-use-package
+(unless (package-installed-p 'vc-use-package)
+  (package-vc-install "https://github.com/slotThe/vc-use-package"))
