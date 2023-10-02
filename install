@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
 ln -s $PWD/init.el $HOME/.emacs
+mkdir -p $HOME/.emacs.d
+ln -s $PWD/early-init.el $HOME/.emacs.d/early-init.el

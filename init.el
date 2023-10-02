@@ -21,19 +21,32 @@
 ;; Automatically revert buffers for changed files.
 (global-auto-revert-mode t)
 
-;; https://github.com/slotThe/vc-use-package
-(unless (package-installed-p 'vc-use-package)
-  (package-vc-install "https://github.com/slotThe/vc-use-package"))
+;; Bootstrap straight.el
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 6))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
+(unless (package-installed-p 'use-package)
+  (straight-use-package 'use-package))
+
+;; By default install packages in use-package forms.
+(setq straight-use-package-by-default t)
 
 (use-package vertico
-  :vc (vertico :url "https://github.com/minad/vertico"
-	       :lisp-dir "extensions/")
   :config
   (vertico-mode)
   (vertico-reverse-mode))
 
 (use-package orderless
-  :vc (orderless :url "https://github.com/oantolin/orderless")
   :custom
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
@@ -60,5 +73,4 @@
 ;; Typed text replaces the active selection.
 (delete-selection-mode t)
 
-(unless (package-installed-p 'magit)
-  (package-install 'magit))
+(use-package magit)
