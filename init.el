@@ -127,3 +127,19 @@
 	(add-hook 'compilation-finish-functions hook)
       (remove-hook 'compilation-finish-functions hook))))
 
+(define-minor-mode auto-quit-compilation-window-mode
+  "A minor mode that automatically quits the compilation window when finished without warnings."
+  :init-value nil
+  (let ((hook (lambda (buffer message)
+		(when (and (buffer-live-p buffer)
+			   (string-match "compilation" (buffer-name buffer))
+			   (string-match "finished" message)
+			     (not (with-current-buffer buffer
+				    (goto-char (point-min))
+				    (search-forward "warning" nil t))))
+		  (run-with-timer 1 nil (lambda (buffer)
+					  (quit-window nil (get-buffer-window buffer nil)))
+				  buffer)))))
+    (if auto-quit-compilation-window-on-success-mode
+	(add-hook 'compilation-finish-functions hook)
+      (remove-hook 'compilation-finish-functions hook))))
