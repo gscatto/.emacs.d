@@ -7,10 +7,10 @@
 (setq backup-directory-alist `(("." . ,(expand-file-name "tmp/backups/" user-emacs-directory))))
 
 ;; Remember recently edited files.
-(recentf-mode +1)
+(recentf-mode t)
 
 ;; Remember minibuffer prompt history.
-(savehist-mode +1)
+(savehist-mode t)
 
 ;; Prevent using UI dialogs for prompts.
 (setq use-dialog-box nil)
@@ -19,7 +19,7 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; Automatically revert buffers for changed files.
-(global-auto-revert-mode +1)
+(global-auto-revert-mode t)
 
 ;; https://github.com/slotThe/vc-use-package
 (unless (package-installed-p 'vc-use-package)
