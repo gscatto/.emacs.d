@@ -109,3 +109,10 @@
   ;; undo-tree
   (vhl/define-extension 'undo-tree 'undo-tree-yank 'undo-tree-move)
   (vhl/install-extension 'undo-tree))
+
+(define-minor-mode recompile-after-save-mode
+  "A minor mode that recompiles after save."
+  :init-value nil
+  (if recompile-after-save-mode
+      (add-hook 'after-save-hook 'recompile)
+    (remove-hook 'after-save-hook 'recompile)))
