@@ -123,7 +123,7 @@
   (let ((hook (lambda (buffer message)
 		(when (y-or-n-p "Quit *compilation* window? ")
 		  (quit-window nil (get-buffer-window buffer nil))))))
-    (if ask-to-quit-window-after-compilation-mode
+    (if ask-to-quit-compilation-window-mode
 	(add-hook 'compilation-finish-functions hook)
       (remove-hook 'compilation-finish-functions hook))))
 
@@ -140,6 +140,6 @@
 		  (run-with-timer 1 nil (lambda (buffer)
 					  (quit-window nil (get-buffer-window buffer nil)))
 				  buffer)))))
-    (if auto-quit-compilation-window-on-success-mode
+    (if auto-quit-compilation-window-mode
 	(add-hook 'compilation-finish-functions hook)
       (remove-hook 'compilation-finish-functions hook))))
