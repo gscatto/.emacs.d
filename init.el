@@ -143,3 +143,7 @@
     (if auto-quit-compilation-window-mode
 	(add-hook 'compilation-finish-functions hook)
       (remove-hook 'compilation-finish-functions hook))))
+
+;; Support ANSI coloring in compilation mode.
+(use-package ansi-color
+    :hook (compilation-filter . ansi-color-compilation-filter)) 
