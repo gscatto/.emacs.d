@@ -8,3 +8,6 @@
 
 ;; Remember recently edited files.
 (recentf-mode +1)
+
+;; Remember minibuffer prompt history.
+(savehist-mode +1)
