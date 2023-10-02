@@ -116,3 +116,14 @@
   (if recompile-after-save-mode
       (add-hook 'after-save-hook 'recompile)
     (remove-hook 'after-save-hook 'recompile)))
+
+(define-minor-mode ask-to-quit-compilation-window-mode
+  "A minor mode that asks to quit the compilation window."
+  :init-value nil
+  (let ((hook (lambda (buffer message)
+		(when (y-or-n-p "Quit *compilation* window? ")
+		  (quit-window nil (get-buffer-window buffer nil))))))
+    (if ask-to-quit-window-after-compilation-mode
+	(add-hook 'compilation-finish-functions hook)
+      (remove-hook 'compilation-finish-functions hook))))
+
