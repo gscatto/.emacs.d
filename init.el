@@ -41,3 +41,6 @@
 ;; TAB first tries to indent the current line, and if the line was already
 ;; indented, then try to complete the thing at point.
 (setq tab-always-indent 'complete)
+
+;; Maximize the Emacs frame on startup.
+(add-hook 'window-setup-hook 'toggle-frame-maximized t)
