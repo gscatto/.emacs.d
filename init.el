@@ -56,3 +56,6 @@
 
 ;; Display the buffer size in the mode line.
 (size-indication-mode t)
+
+;; Typed text replaces the active selection.
+(delete-selection-mode t)
