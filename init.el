@@ -151,3 +151,6 @@
 ;; Hide the tool bar.
 (when (fboundp 'tool-bar-mode)
   (tool-bar-mode -1))
+
+;; The mode line face inherits variable pitch.
+(set-face-attribute 'mode-line nil :inherit 'variable-pitch)
