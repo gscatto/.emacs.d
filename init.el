@@ -134,9 +134,9 @@
 		(when (and (buffer-live-p buffer)
 			   (string-match "compilation" (buffer-name buffer))
 			   (string-match "finished" message)
-			     (not (with-current-buffer buffer
-				    (goto-char (point-min))
-				    (search-forward "warning" nil t))))
+			   (not (with-current-buffer buffer
+				  (goto-char (point-min))
+				  (search-forward "warning" nil t))))
 		  (run-with-timer 1 nil (lambda (buffer)
 					  (quit-window nil (get-buffer-window buffer nil)))
 				  buffer)))))
@@ -146,4 +146,6 @@
 
 ;; Support ANSI coloring in compilation mode.
 (use-package ansi-color
-    :hook (compilation-filter . ansi-color-compilation-filter)) 
+  :hook (compilation-filter . ansi-color-compilation-filter))
+
+
