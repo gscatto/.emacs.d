@@ -159,4 +159,6 @@
   :bind (("C-c n f" . org-roam-node-find)
 	 ("C-c n i" . org-roam-node-insert)
 	 ("C-c n c" . org-roam-node-capture)
-	 ("C-c n r" . org-roam-node-random)))
+	 ("C-c n r" . org-roam-node-random))
+  :custom
+  (org-roam-database-connector 'sqlite-builtin))
