@@ -162,3 +162,5 @@
 	 ("C-c n r" . org-roam-node-random))
   :custom
   (org-roam-database-connector 'sqlite-builtin))
+
+(use-package embark)
