@@ -169,3 +169,8 @@
 	 ("C-;" . embark-dwim)
 	 ("C-c e a" . embark-act)
 	 ("C-c e d" . embark-dwim)))
+
+(use-package org
+  :straight (:type built-in)
+  :custom
+  (org-attach-store-link-p 'attached))
