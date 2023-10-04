@@ -174,5 +174,3 @@
   :straight (:type built-in)
   :custom
   (org-attach-store-link-p 'attached))
-
-(load-theme 'modus-operandi t)
