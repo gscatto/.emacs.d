@@ -163,4 +163,9 @@
   :custom
   (org-roam-database-connector 'sqlite-builtin))
 
-(use-package embark)
+(use-package embark
+  :bind (("<mouse-3>" . embark-act)
+	 ("C-." . embark-act)
+	 ("C-;" . embark-dwim)
+	 ("C-c e a" . embark-act)
+	 ("C-c e d" . embark-dwim)))
