@@ -154,3 +154,9 @@
 
 ;; The mode line face inherits variable pitch.
 (set-face-attribute 'mode-line nil :inherit 'variable-pitch)
+
+(use-package org-roam
+  :bind (("C-c n f" . org-roam-node-find)
+	 ("C-c n i" . org-roam-node-insert)
+	 ("C-c n c" . org-roam-node-capture)
+	 ("C-c n r" . org-roam-node-random)))
