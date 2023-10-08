@@ -21,6 +21,9 @@
 ;; Automatically revert buffers for changed files.
 (global-auto-revert-mode t)
 
+;; Automatically revert changed file and custom buffers.
+(setq global-auto-revert-non-file-buffers t)
+
 ;; Bootstrap straight.el
 (defvar bootstrap-version)
 (let ((bootstrap-file
