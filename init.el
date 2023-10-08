@@ -175,6 +175,7 @@
 
 (use-package org
   :straight (:type built-in)
+  :hook (org-mode . variable-pitch-mode)
   :custom
   (org-attach-store-link-p 'attached))
 
