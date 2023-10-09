@@ -181,3 +181,8 @@
   (org-attach-store-link-p 'attached))
 
 (if theme (load-theme theme t))
+
+;; Activate visual-fill-column-mode whenever visual-line-mode is active.
+(use-package visual-fill-column
+  :hook (visual-line-mode . visual-fill-column-mode)
+  :custom (visual-fill-column-center-text t))
