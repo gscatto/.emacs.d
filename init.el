@@ -178,7 +178,8 @@
   :hook ((org-mode . variable-pitch-mode)
 	 (org-mode . visual-line-mode))
   :custom
-  (org-attach-store-link-p 'attached))
+  (org-attach-store-link-p 'attached)
+  (org-id-link-to-org-use-id t))
 
 (if theme (load-theme theme t))
 
