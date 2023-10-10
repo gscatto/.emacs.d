@@ -175,6 +175,7 @@
 
 (use-package org
   :straight (:type built-in)
+  :bind (("C-c l" . org-store-link))
   :hook ((org-mode . variable-pitch-mode)
 	 (org-mode . visual-line-mode))
   :custom
