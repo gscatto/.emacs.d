@@ -196,3 +196,11 @@
 ;; otherwise.
 (use-package smart-dash
   :hook ((ruby-mode python-mode) . smart-dash-mode))
+
+;; https://github.com/purcell/exec-path-from-shell
+;;
+;; A GNU Emacs library to ensure environment variables inside Emacs
+;; look the same as in the user's shell.
+(use-package exec-path-from-shell
+  :config
+  (exec-path-from-shell-initialize))
