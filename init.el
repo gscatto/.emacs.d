@@ -188,3 +188,11 @@
 (use-package visual-fill-column
   :hook (visual-line-mode . visual-fill-column-mode)
   :custom (visual-fill-column-center-text t))
+
+;; http://malsyned.net/smart-dash.html
+;;
+;; Smart-Dash mode is an Emacs minor mode which redefines the dash key
+;; to insert an underscore within C-style identifiers and a dash
+;; otherwise.
+(use-package smart-dash
+  :hook ((ruby-mode python-mode) . smart-dash-mode))
