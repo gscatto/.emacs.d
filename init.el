@@ -81,7 +81,7 @@
   (add-hook 'after-save-hook 'magit-after-save-refresh-status t))
 
 (use-package diff-hl
-  :hook (((emacs-lisp-mode . diff-hl-mode))
+  :hook (((emacs-lisp-mode ruby-mode) . diff-hl-mode)
 	 (magit-pre-refresh . diff-hl-magit-pre-refresh)
 	 (magit-post-refresh . diff-hl-magit-post-refresh))
   :config
