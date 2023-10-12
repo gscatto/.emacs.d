@@ -202,3 +202,6 @@
 (use-package exec-path-from-shell
   :config
   (exec-path-from-shell-initialize))
+
+;; Do Auto-Revert Mode file checks every half a second.
+(setq auto-revert-interval 0.5)
