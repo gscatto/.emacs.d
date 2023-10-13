@@ -211,3 +211,8 @@
 
 ;; Do Auto-Revert Mode file checks every half a second.
 (setq auto-revert-interval 0.5)
+
+(use-package rustic
+  :config
+  ;; Use Eglot as LSP client
+  (setq rustic-lsp-client 'eglot))
