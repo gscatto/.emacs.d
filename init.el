@@ -199,7 +199,7 @@
 ;; to insert an underscore within C-style identifiers and a dash
 ;; otherwise.
 (use-package smart-dash
-  :hook ((ruby-mode python-mode) . smart-dash-mode))
+  :hook ((ruby-mode python-mode rustic-mode) . smart-dash-mode))
 
 ;; https://github.com/purcell/exec-path-from-shell
 ;;
