@@ -267,3 +267,8 @@
    "Timer updating the modeline."))
 ;; Display-Time-Since-First-Change mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package flymake
+  :straight (:type built-in)
+  :bind (("M-n" . flymake-goto-next-error)
+	 ("M-p" . flymake-goto-prev-error)))
