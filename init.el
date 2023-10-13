@@ -169,9 +169,7 @@
 (use-package embark
   :bind (("<mouse-3>" . embark-act)
 	 ("C-." . embark-act)
-	 ("C-;" . embark-dwim)
-	 ("C-c e a" . embark-act)
-	 ("C-c e d" . embark-dwim)))
+	 ("C-;" . embark-dwim)))
 
 (use-package org
   :straight (:type built-in)
@@ -181,6 +179,14 @@
   :custom
   (org-attach-store-link-p 'attached)
   (org-id-link-to-org-use-id t))
+
+(use-package eglot
+  :straight (:type built-in)
+  :bind (("C-c e" . eglot-code-action-extract)
+	 ("C-c i" . eglot-code-action-inline)
+	 ("C-c q" . eglot-code-action-quickfix)
+	 ("C-c r" . eglot-rename)
+	 ("C-c a" . eglot-code-actions)))
 
 (if theme (load-theme theme t))
 
