@@ -216,3 +216,52 @@
   :config
   ;; Use Eglot as LSP client
   (setq rustic-lsp-client 'eglot))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Display-Time-Since-First-Change mode
+(define-minor-mode display-time-since-first-change-mode
+  "A minor mode that displays the time elapsed since the first change in the buffer."
+  :init-value nil
+  (when (timerp display-time-since-first-change-mode/timer)
+    (cancel-timer display-time-since-first-change-mode/timer)
+    (setq display-time-since-first-change-mode/timer nil))
+  (if display-time-since-first-change-mode (display-time-since-first-change-mode/install) (display-time-since-first-change-mode/uninstall)))
+
+(defun display-time-since-first-change-mode/install ()
+  (add-hook 'first-change-hook 'display-time-since-first-change-mode/after-first-change nil t)
+  (add-hook 'after-save-hook 'display-time-since-first-change-mode/after-save nil t)
+  (unless (memq 'display-time-since-first-change-mode/mode-line-text mode-line-format)
+    (setq mode-line-format (nconc mode-line-format (list 'display-time-since-first-change-mode/mode-line-text))))
+  (setq display-time-since-first-change-mode/timer (run-with-timer 0 1 #'display-time-since-first-change-mode/update-modeline))
+  (message "Display-Time-Since-First-Change mode enabled"))
+
+(defun display-time-since-first-change-mode/uninstall ()
+  (remove-hook 'first-change-hook 'display-time-since-first-change-mode/after-first-change)
+  (setq mode-line-format (delq 'display-time-since-first-change-mode/mode-line-text mode-line-format))
+  (message "Display-Time-Since-First-Change mode disabled"))
+
+(defun display-time-since-first-change-mode/after-first-change ()
+  (setq display-time-since-first-change-mode/first-change-time (current-time)))
+
+(defun display-time-since-first-change-mode/after-save ()
+  (setq display-time-since-first-change-mode/first-change-time nil))
+
+(defun display-time-since-first-change-mode/update-modeline ()
+  (when display-time-since-first-change-mode
+    (message (buffer-name))
+    (setq display-time-since-first-change-mode/mode-line-text (if display-time-since-first-change-mode/first-change-time (format-time-string "%M:%S" (time-subtract (current-time) display-time-since-first-change-mode/first-change-time) 0) "00:00"))
+    (force-mode-line-update t)))
+
+(make-variable-buffer-local
+ (defvar display-time-since-first-change-mode/first-change-time nil
+   "The time of the first change of the current buffer."))
+
+(make-variable-buffer-local
+ (defvar display-time-since-first-change-mode/mode-line-text ""
+   "What it is actually displayed in the modeline."))
+
+(make-variable-buffer-local
+ (defvar display-time-since-first-change-mode/timer nil
+   "Timer updating the modeline."))
+;; Display-Time-Since-First-Change mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
