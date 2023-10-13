@@ -247,6 +247,8 @@
   (setq display-time-since-first-change-mode/first-change-time nil))
 
 (defun display-time-since-first-change-mode/update-modeline ()
+  (unless (buffer-modified-p)
+    (setq display-time-since-first-change-mode/first-change-time nil))
   (when display-time-since-first-change-mode
     (message (buffer-name))
     (setq display-time-since-first-change-mode/mode-line-text (if display-time-since-first-change-mode/first-change-time (format-time-string "%M:%S" (time-subtract (current-time) display-time-since-first-change-mode/first-change-time) 0) "00:00"))
