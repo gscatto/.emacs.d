@@ -272,3 +272,5 @@
   :straight (:type built-in)
   :bind (("M-n" . flymake-goto-next-error)
 	 ("M-p" . flymake-goto-prev-error)))
+
+(use-package graphviz-dot-mode)
