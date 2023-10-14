@@ -281,3 +281,8 @@
 
 ;; Stop asking whether to revert a file or not.
 (setq revert-without-query '(".*"))
+
+;; Make Emacs write all the lock files to /var/tmp/
+;; https://www.gnu.org/software/emacs/manual/html_node/elisp/File-Locks.html
+(setq lock-file-name-transforms
+      '(("\\`/.*/\\([^/]+\\)\\'" "/var/tmp/\\1" t)))
