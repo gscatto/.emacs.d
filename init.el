@@ -286,3 +286,6 @@
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/File-Locks.html
 (setq lock-file-name-transforms
       '(("\\`/.*/\\([^/]+\\)\\'" "/var/tmp/\\1" t)))
+
+;; Ask Emacs not to make backup files
+(setq make-backup-files nil)
