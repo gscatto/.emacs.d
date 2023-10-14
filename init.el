@@ -182,11 +182,11 @@
 
 (use-package eglot
   :straight (:type built-in)
-  :bind (("C-c e" . eglot-code-action-extract)
-	 ("C-c i" . eglot-code-action-inline)
-	 ("C-c q" . eglot-code-action-quickfix)
-	 ("C-c r" . eglot-rename)
-	 ("C-c a" . eglot-code-actions)))
+  :bind (:map eglot-mode-map ("C-c e" . eglot-code-action-extract)
+	      ("C-c i" . eglot-code-action-inline)
+	      ("C-c q" . eglot-code-action-quickfix)
+	      ("C-c r" . eglot-rename)
+	      ("C-c a" . eglot-code-actions)))
 
 (if theme (load-theme theme t))
 
