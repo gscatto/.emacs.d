@@ -278,3 +278,6 @@
 (use-package which-key
   :config
   (which-key-mode t))
+
+;; Stop asking whether to revert a file or not.
+(setq revert-without-query '(".*"))
