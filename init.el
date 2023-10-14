@@ -274,3 +274,7 @@
 	 ("M-p" . flymake-goto-prev-error)))
 
 (use-package graphviz-dot-mode)
+
+(use-package which-key
+  :config
+  (which-key-mode t))
