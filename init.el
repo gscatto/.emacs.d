@@ -291,3 +291,6 @@
 (setq make-backup-files nil)
 
 (use-package tuareg)
+
+;; Do not create lock files
+(setq create-lockfiles nil)
