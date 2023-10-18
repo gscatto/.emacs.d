@@ -289,3 +289,5 @@
 
 ;; Ask Emacs not to make backup files
 (setq make-backup-files nil)
+
+(use-package tuareg)
