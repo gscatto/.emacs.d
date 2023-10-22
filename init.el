@@ -302,14 +302,50 @@
 	 ("M-s l" . consult-line)
          ("M-s L" . consult-line-multi)))
 
+;; https://emacs.stackexchange.com/a/7156
+(defun matches-in-buffer (regexp &optional buffer)
+  "Return a list of matches of REGEXP in BUFFER or the current buffer if not given."
+  (let ((matches))
+    (save-match-data
+      (save-excursion
+        (with-current-buffer (or buffer (current-buffer))
+          (save-restriction
+            (widen)
+            (goto-char 1)
+            (while (search-forward-regexp regexp nil t 1)
+              (push (match-string-no-properties 0) matches)))))
+      matches)))
+
 ;; Custom mode for Todo.txt files
+(defun todotxt-indent-function ()
+  (save-excursion
+    (beginning-of-line)
+    (indent-line-to 0)))
+(defvar todotxt-syntax-table)
+(setq todotxt-syntax-table
+      (let ((table (make-syntax-table)))
+	(modify-syntax-entry ?@ "_" table)
+	(modify-syntax-entry ?# "_" table)
+	(modify-syntax-entry ?+ "_" table)
+	table))
+(defun todotxt-completion-at-point ()
+  (interactive)
+  (let* ((bounds (bounds-of-thing-at-point 'symbol))
+	 (start (car bounds))
+	 (stop (cdr bounds))
+	 (candidates (delete (symbol-name (symbol-at-point)) (matches-in-buffer "[@#\\+][A-Za-z0-9]+"))))
+    (list start stop candidates nil)))
 (defvar todotxt-highlights nil)
 (setq todotxt-highlights
       '(("\\+[A-Za-z0-9]+" . 'outline-1)
 	("@[A-Za-z0-9]+" . 'outline-2)
-	("\\#[A-Za-z0-9]+" . 'outline-3)))
-(define-derived-mode todotxt-mode fundamental-mode "Todo.txt"
+	("#[A-Za-z0-9]+" . 'outline-3)
+	("[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}" . 'org-date)))
+(define-derived-mode todotxt-mode c-mode "Todo.txt"
   "Major mode for editing Todo.txt files."
+  (set (make-local-variable 'indent-line-function) #'todotxt-indent-function)
+  (set-syntax-table todotxt-syntax-table)
+  (add-hook 'completion-at-point-functions 'todotxt-completion-at-point nil 'local)
   (variable-pitch-mode)
   (setq font-lock-defaults '(todotxt-highlights)))
 (add-to-list 'auto-mode-alist '("\\.todo.txt\\'" . todotxt-mode))
