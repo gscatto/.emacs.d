@@ -294,3 +294,10 @@
 
 ;; Do not create lock files
 (setq create-lockfiles nil)
+
+(use-package consult
+  :bind (("C-x b" . consult-buffer)
+	 ("C-x 4 b" . consult-buffer-other-window)
+	 ("C-x 5 b" . consult-buffer-other-frame)
+	 ("M-s l" . consult-line)
+         ("M-s L" . consult-line-multi)))
