@@ -301,3 +301,15 @@
 	 ("C-x 5 b" . consult-buffer-other-frame)
 	 ("M-s l" . consult-line)
          ("M-s L" . consult-line-multi)))
+
+;; Custom mode for Todo.txt files
+(defvar todotxt-highlights nil)
+(setq todotxt-highlights
+      '(("\\+[A-Za-z0-9]+" . 'outline-1)
+	("@[A-Za-z0-9]+" . 'outline-2)
+	("\\#[A-Za-z0-9]+" . 'outline-3)))
+(define-derived-mode todotxt-mode fundamental-mode "Todo.txt"
+  "Major mode for editing Todo.txt files."
+  (variable-pitch-mode)
+  (setq font-lock-defaults '(todotxt-highlights)))
+(add-to-list 'auto-mode-alist '("\\.todo.txt\\'" . todotxt-mode))
