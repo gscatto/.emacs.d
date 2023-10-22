@@ -188,7 +188,7 @@
 	      ("C-c r" . eglot-rename)
 	      ("C-c a" . eglot-code-actions)))
 
-(if theme (load-theme theme t))
+(if (boundp 'theme) (load-theme theme t))
 
 (use-package visual-fill-column
   :custom (visual-fill-column-center-text t))
