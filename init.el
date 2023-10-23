@@ -337,10 +337,11 @@
     (list start stop candidates nil)))
 (defvar todotxt-highlights nil)
 (setq todotxt-highlights
-      '(("\\+[A-Za-z0-9]+" . 'outline-1)
-	("@[A-Za-z0-9]+" . 'outline-2)
-	("#[A-Za-z0-9]+" . 'outline-3)
-	("[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}" . 'org-date)))
+      '(("[\n ]\\+[A-Za-z0-9]+" . 'outline-3)
+	(" @[A-Za-z0-9]+" . 'outline-4)
+	(" #[A-Za-z0-9]+" . 'outline-5)
+	("[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}" . 'org-date)
+	("https?://[A-Za-z0-9./~:%?#=&_-]+" . 'link)))
 (define-derived-mode todotxt-mode c-mode "Todo.txt"
   "Major mode for editing Todo.txt files."
   (set (make-local-variable 'indent-line-function) #'todotxt-indent-function)
