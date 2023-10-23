@@ -300,7 +300,9 @@
 	 ("C-x 4 b" . consult-buffer-other-window)
 	 ("C-x 5 b" . consult-buffer-other-frame)
 	 ("M-s l" . consult-line)
-         ("M-s L" . consult-line-multi)))
+         ("M-s L" . consult-line-multi)
+	 ("M-s k" . consult-keep-lines)
+         ("M-s u" . consult-focus-lines)))
 
 ;; https://emacs.stackexchange.com/a/7156
 (defun matches-in-buffer (regexp &optional buffer)
