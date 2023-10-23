@@ -349,3 +349,6 @@
   (variable-pitch-mode)
   (setq font-lock-defaults '(todotxt-highlights)))
 (add-to-list 'auto-mode-alist '("\\.todo.txt\\'" . todotxt-mode))
+
+;; Automatically save buffers upon compilation.
+(setq compilation-ask-about-save nil)
