@@ -349,6 +349,10 @@
           ("M-s" . consult-history)                 ;; orig. next-matching-history-element
           ("M-r" . consult-history))))
 
+;; In Termux open URLs using default Android browser
+(when (getenv "ANDROID_ROOT")
+  (setq browse-url-browser-function 'browse-url-xdg-open))
+
 ;; https://emacs.stackexchange.com/a/7156
 (defun matches-in-buffer (regexp &optional buffer)
   "Return a list of matches of REGEXP in BUFFER or the current buffer if not given."
