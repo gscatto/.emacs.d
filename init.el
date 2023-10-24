@@ -169,6 +169,8 @@
 (use-package embark
   :bind (("<mouse-3>" . embark-act)
 	 ("C-." . embark-act)
+	 ("C-c e a" . embark-act)
+	 ("C-c e d" . embark-dwim)
 	 ("C-;" . embark-dwim)))
 
 (use-package org
