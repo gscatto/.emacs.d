@@ -355,7 +355,10 @@
 (when (getenv "ANDROID_ROOT")
   (setq browse-url-browser-function 'browse-url-xdg-open))
 
-(use-package embark-consult)
+(use-package embark-consult
+  :ensure t ; only need to install it, embark loads it after consult if found
+  :hook
+  (embark-collect-mode . consult-preview-at-point-mode))
 
 ;; https://emacs.stackexchange.com/a/7156
 (defun matches-in-buffer (regexp &optional buffer)
@@ -392,9 +395,9 @@
     (list start stop candidates nil)))
 (defvar todotxt-highlights nil)
 (setq todotxt-highlights
-      '(("[\n ]\\+[A-Za-z0-9]+" . 'outline-3)
-	(" @[A-Za-z0-9]+" . 'outline-4)
-	(" #[A-Za-z0-9]+" . 'outline-5)
+      '(("[\n ]\\+[A-Za-z0-9]+" . 'outline-1)
+	(" @[A-Za-z0-9]+" . 'outline-2)
+	(" #[A-Za-z0-9]+" . 'outline-3)
 	("[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}" . 'org-date)
 	("https?://[A-Za-z0-9./~:%?#=&_-]+" . 'link)))
 (define-derived-mode todotxt-mode c-mode "Todo.txt"
