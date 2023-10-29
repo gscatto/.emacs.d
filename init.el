@@ -411,3 +411,6 @@
 
 ;; Automatically save buffers upon compilation.
 (setq compilation-ask-about-save nil)
+
+(use-package ace-jump-mode
+  :bind (("C-c SPC" . ace-jump-mode)))
