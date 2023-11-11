@@ -1,0 +1,9 @@
+* Ignore everything and add specific things back
+#+begin_src text :tangle .gitignore
+  # Ignore everything
+  ,*
+  # Include README.org
+  !README.org
+#+end_src
+References:
+- https://jasonstitt.com/gitignore-whitelisting-patterns
