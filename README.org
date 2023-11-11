@@ -80,3 +80,23 @@ Emacs to load it and not to be mad if it does not exist.
   ;; Block until current queue processed.
   (elpaca-wait)
 #+end_src
+* Install Magit
+#+begin_src elisp :tangle init.el
+  (use-package magit
+    :config
+    ;; Refresh the status buffer of the current repository after a buffer is saved to its file.
+    (add-hook 'after-save-hook 'magit-after-save-refresh-status t))
+#+end_src
+* Install Diff-Hl-Mode
+[[https://github.com/dgutov/diff-hl][Diff-Hl-Mode]] highlights uncommitted changes on the left side of the
+window, allows to jump between and revert them selectively.
+#+begin_src elisp :tangle init.el
+  (use-package diff-hl
+    :hook
+    ((org-mode prog-mode) . diff-hl-mode)
+    (magit-pre-refresh-hook . diff-hl-magit-pre-refresh)
+    (magit-post-refresh . diff-hl-magit-post-refresh)
+    :config
+    ;; Perform highlighting on-the-fly.
+    (diff-hl-flydiff-mode t))
+#+end_src
