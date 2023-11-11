@@ -7,3 +7,14 @@
 #+end_src
 References:
 - https://jasonstitt.com/gitignore-whitelisting-patterns
+* Store customization information in a separate file
+By default Emacs uses the ~user-init-file~ for storing customization
+information. Unfortunately I regenerate the same file whenever I
+update the Emacs configuration by tangling the file you are currently
+reading, erasing the customization information. Therefore I store it
+in a separate file which is only written by Emacs itself. Then I tell
+Emacs to load it and not to be mad if it does not exist.
+#+begin_src elisp :tangle init.el
+  (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+  (load custom-file t) ;; Load custom file reporting no error if it does not exist.
+#+end_src
