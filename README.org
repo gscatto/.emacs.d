@@ -22,3 +22,7 @@ Emacs to load it and not to be mad if it does not exist.
 #+begin_src elisp :tangle init.el
   (setq backup-directory-alist `(("." . ,(expand-file-name "backup" user-emacs-directory))))
 #+end_src
+* Disable lockfiles
+#+begin_src elisp :tangle init.el
+  (setq create-lockfiles nil)
+#+end_src
