@@ -123,6 +123,10 @@ Source: https://emacs.stackexchange.com/a/20618
 #+begin_src elisp :tangle init.el
   (recentf-mode t)
 #+end_src
+** Remember minibuffer prompt history
+#+begin_src elisp :tangle init.el
+  (savehist-mode t)
+#+end_src
 * Android configuration
 ** The configuration script
 :PROPERTIES:
