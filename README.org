@@ -182,6 +182,13 @@ Source: https://emacs.stackexchange.com/a/20618
 #+begin_src elisp :tangle
   (save-place-mode 1)
 #+end_src
+** Install undo-tree
+#+begin_src elisp :tangle init.el
+  (use-package undo-tree
+    :config
+    (global-undo-tree-mode 1)
+    (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo"))))
+#+end_src
 * Android configuration
 ** The configuration script
 :PROPERTIES:
