@@ -119,6 +119,10 @@ Source: https://emacs.stackexchange.com/a/20618
     :config
     (exec-path-from-shell-initialize))
 #+end_src
+** Remember recently edited files
+#+begin_src elisp :tangle init.el
+  (recentf-mode t)
+#+end_src
 * Android configuration
 ** The configuration script
 :PROPERTIES:
