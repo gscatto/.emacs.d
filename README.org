@@ -118,3 +118,95 @@ Source: https://emacs.stackexchange.com/a/20618
     :config
     (exec-path-from-shell-initialize))
 #+end_src
+* Android configuration
+** The configuration script
+:PROPERTIES:
+:header-args: :tangle (if (getenv "TERMUX_VERSION") "no" "configure-termux") :results none 
+:END:
+*** Deliberately cause the configuration script to fail
+#+begin_src shell
+  set -euxo pipefail
+#+end_src
+*** Select mirror or mirror group
+#+begin_src shell
+  : "Did I select either a mirror or a mirror group?"
+  if [ ! -f .termux-change-repo ]; then
+      termux-change-repo
+      touch .termux-change-repo
+  fi
+#+end_src
+*** Update apt databases from configured repositories
+We update apt databases at most once a week as suggested [[https://wiki.termux.com/wiki/Package_Management][here]].
+#+begin_src shell
+  : "Did I update the apt databases in the last week?"
+  if [ ! -f .pkg-update ] || [[ $(find . -name ".pkg-update" -mtime +7 -print) ]]; then
+      pkg update -y
+      touch .pkg-update
+  fi
+#+end_src
+References:
+- https://stackoverflow.com/a/32019461
+- https://wiki.termux.com/wiki/Package_Management
+*** Upgrade all installed packages to the latest version
+#+begin_src shell
+  : "Did I upgrade all the installed packages?"
+  if [ ! -f .pkg-upgrade ]; then
+      pkg upgrade -y
+      touch .pkg-upgrade
+  fi
+#+end_src
+*** Enable the ~x11-repo~ repository
+#+begin_src shell
+  : "Did I enable the x11-repo repository?"
+  if [ ! -f .x11-repo ]; then
+      pkg install x11-repo
+      touch .x11-repo
+  fi
+#+end_src
+References:
+- https://github.com/termux/termux-x11
+*** Install the nighly companion package
+#+begin_src shell
+  : "Did I install the companion package?"
+  if [ ! -f .pkg-install-termux-x11-nightly ]; then
+      pkg install termux-x11-nightly -y
+      touch .pkg-install-termux-x11-nightly
+  fi
+#+end_src
+*** Install Git
+#+begin_src shell
+  : "Did I install Git?"
+  if [ ! -f .pkg-install-git ]; then
+      pkg install git -y
+      touch .pkg-install-git
+  fi
+#+end_src
+*** Install Emacs
+#+begin_src shell
+  : "Did I install Emacs?"
+  if [ ! -f .pkg-install-emacs ]; then
+      pkg install emacs-x -y
+      touch .pkg-install-emacs
+  fi
+#+end_src
+*** Clone this repository
+#+begin_src shell
+  : "Did I clone the Emacs configuration repository?"
+  if [ ! -d .emacs.d ]; then
+      git clone https://github.com/gscatto/.emacs.d.git
+  fi
+#+end_src
+*** Generate the configuration files
+#+begin_src shell
+  : "Regenerate the configuration files"
+  (cd .emacs.d && emacs --batch -Q -l org README.org -f org-babel-tangle)
+#+end_src
+** Remote configuration process
+*** Send the configuration script to the terminal
+#+begin_src shell :results silent
+  cat configure-termux | curl -T - https://ppng.io/kj1q98cnj12
+#+end_src
+*** Receive and execute the configuration script at the terminal
+#+begin_src shell :results none
+  bash <(curl https://ppng.io/kj1q98cnj12)
+#+end_src
