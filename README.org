@@ -135,6 +135,14 @@ Source: https://emacs.stackexchange.com/a/20618
 #+begin_src elisp :tangle init.el
   (defalias 'yes-or-no-p 'y-or-n-p)
 #+end_src
+** Automatically revert buffers for changed files
+#+begin_src elisp :tangle init.el
+  (global-auto-revert-mode 1)
+#+end_src
+** Automatically revert changed file buffers and custom bufffers
+#+begin_src elisp :tangle init.el
+  (setq global-auto-revert-non-file-buffers 1)
+#+end_src
 * Android configuration
 ** The configuration script
 :PROPERTIES:
