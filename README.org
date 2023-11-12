@@ -170,6 +170,14 @@ Source: https://emacs.stackexchange.com/a/20618
 #+begin_src elisp :tangle init.el
   (setq-default cursor-type 'bar)
 #+end_src
+** Disable the tool bar
+#+begin_src elisp :tangle init.el
+  (tool-bar-mode -1)
+#+end_src
+** Disable the menu bar
+#+begin_src elisp :tangle init.el
+  (menu-bar-mode -1)
+#+end_src
 * Android configuration
 ** The configuration script
 :PROPERTIES:
