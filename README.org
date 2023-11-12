@@ -162,6 +162,10 @@ Source: https://emacs.stackexchange.com/a/20618
   (when (fboundp 'pixel-scroll-precision-mode)
     (pixel-scroll-precision-mode 1))
 #+end_src
+** Typed text replaces the active selection
+#+begin_src elisp :tangle init.el
+  (delete-selection-mode 1)
+#+end_src
 * Android configuration
 ** The configuration script
 :PROPERTIES:
