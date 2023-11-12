@@ -131,6 +131,10 @@ Source: https://emacs.stackexchange.com/a/20618
 #+begin_src elisp :tangle init.el
   (setq use-dialog-box nil)
 #+end_src
+** Always use `y` or `n` for yes-no responses
+#+begin_src elisp :tangle init.el
+  (defalias 'yes-or-no-p 'y-or-n-p)
+#+end_src
 * Android configuration
 ** The configuration script
 :PROPERTIES:
