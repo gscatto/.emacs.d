@@ -166,6 +166,10 @@ Source: https://emacs.stackexchange.com/a/20618
 #+begin_src elisp :tangle init.el
   (delete-selection-mode 1)
 #+end_src
+** Make the cursor a thin bar
+#+begin_src elisp :tangle init.el
+  (setq-default cursor-type 'bar)
+#+end_src
 * Android configuration
 ** The configuration script
 :PROPERTIES:
