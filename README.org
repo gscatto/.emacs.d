@@ -1,3 +1,4 @@
+-*- mode: org; org-confirm-babel-evaluate: nil -*-
 * Ignore everything and add specific things back
 #+begin_src text :tangle .gitignore
   # Ignore everything
