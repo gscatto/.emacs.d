@@ -178,6 +178,10 @@ Source: https://emacs.stackexchange.com/a/20618
 #+begin_src elisp :tangle init.el
   (menu-bar-mode -1)
 #+end_src
+** Automatically save place in each file
+#+begin_src elisp :tangle
+  (save-place-mode 1)
+#+end_src
 * Android configuration
 ** The configuration script
 :PROPERTIES:
