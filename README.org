@@ -100,7 +100,7 @@ window, allows to jump between and revert them selectively.
     (magit-post-refresh . diff-hl-magit-post-refresh)
     :config
     ;; Perform highlighting on-the-fly.
-    (diff-hl-flydiff-mode t))
+    (diff-hl-flydiff-mode 1))
 #+end_src
 ** Load support for language on execution of code block
 #+begin_src elisp :tangle init.el
@@ -121,11 +121,11 @@ Source: https://emacs.stackexchange.com/a/20618
 #+end_src
 ** Remember recently edited files
 #+begin_src elisp :tangle init.el
-  (recentf-mode t)
+  (recentf-mode 1)
 #+end_src
 ** Remember minibuffer prompt history
 #+begin_src elisp :tangle init.el
-  (savehist-mode t)
+  (savehist-mode 1)
 #+end_src
 ** Prevent using UI dialogs for prompts
 #+begin_src elisp :tangle init.el
