@@ -202,6 +202,25 @@ TAB first tries to indent the current line, and if the line was already indented
     :custom
     (completion-cycle-threshold 3))
 #+end_src
+** Make the mode line face inherit ~variable-pitch~
+#+begin_src elisp
+  (set-face-attribute 'mode-line nil :inherit 'variable-pitch)
+#+end_src
+** Make the Org block face inherit ~fixed-pitch~
+#+begin_src elisp
+  (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
+#+end_src
+** Configure Org-Mode
+#+begin_src elisp
+  (use-package org
+    :elpaca nil
+    :bind (("C-c l" . org-store-link))
+    :hook ((org-mode . variable-pitch-mode)
+	   (org-mode . visual-line-mode))
+    :custom
+    (org-attach-store-link-p 'attached)
+    (org-id-link-to-org-use-id t))
+#+end_src
 * Android configuration
 ** The configuration script
 :PROPERTIES:
