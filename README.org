@@ -127,6 +127,10 @@ Source: https://emacs.stackexchange.com/a/20618
 #+begin_src elisp :tangle init.el
   (savehist-mode t)
 #+end_src
+** Prevent using UI dialogs for prompts
+#+begin_src elisp :tangle init.el
+  (setq use-dialog-box nil)
+#+end_src
 * Android configuration
 ** The configuration script
 :PROPERTIES:
