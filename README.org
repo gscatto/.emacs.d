@@ -179,7 +179,7 @@ Source: https://emacs.stackexchange.com/a/20618
   (menu-bar-mode -1)
 #+end_src
 ** Automatically save place in each file
-#+begin_src elisp :tangle
+#+begin_src elisp :tangle init.el
   (save-place-mode 1)
 #+end_src
 ** Install undo-tree
