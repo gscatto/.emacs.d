@@ -196,6 +196,11 @@ References:
       git clone https://github.com/gscatto/.emacs.d.git
   fi
 #+end_src
+*** Pull the latest changes
+#+begin_src shell
+  : "Did I pull the latest changes?"
+  (cd .emacs.d && git pull --ff-only)
+#+end_src
 *** Generate the configuration files
 #+begin_src shell
   : "Regenerate the configuration files"
