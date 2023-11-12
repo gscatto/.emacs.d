@@ -1,5 +1,6 @@
 -*- mode: org; org-confirm-babel-evaluate: nil -*-
-* Ignore everything and add specific things back
+* Emacs configuration
+** Ignore everything and add specific things back
 #+begin_src text :tangle .gitignore
   # Ignore everything
   ,*
@@ -8,7 +9,7 @@
 #+end_src
 References:
 - https://jasonstitt.com/gitignore-whitelisting-patterns
-* Store customization information in a separate file
+** Store customization information in a separate file
 By default Emacs uses the ~user-init-file~ for storing customization
 information. Unfortunately I regenerate the same file whenever I
 update the Emacs configuration by tangling the file you are currently
@@ -19,15 +20,15 @@ Emacs to load it and not to be mad if it does not exist.
   (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
   (load custom-file t) ;; Load custom file reporting no error if it does not exist.
 #+end_src
-* Make backup files in dedicated directory
+** Make backup files in dedicated directory
 #+begin_src elisp :tangle init.el
   (setq backup-directory-alist `(("." . ,(expand-file-name "backup" user-emacs-directory))))
 #+end_src
-* Disable lockfiles
+** Disable lockfiles
 #+begin_src elisp :tangle init.el
   (setq create-lockfiles nil)
 #+end_src
-* Install Elpaca
+** Install Elpaca
 [[https://github.com/progfolio/elpaca][Elpaca]] is a package manager for Emacs.
 #+begin_src elisp :tangle init.el
   (defvar elpaca-installer-version 0.6)
@@ -81,14 +82,14 @@ Emacs to load it and not to be mad if it does not exist.
   ;; Block until current queue processed.
   (elpaca-wait)
 #+end_src
-* Install Magit
+** Install Magit
 #+begin_src elisp :tangle init.el
   (use-package magit
     :config
     ;; Refresh the status buffer of the current repository after a buffer is saved to its file.
     (add-hook 'after-save-hook 'magit-after-save-refresh-status t))
 #+end_src
-* Install Diff-Hl-Mode
+** Install Diff-Hl-Mode
 [[https://github.com/dgutov/diff-hl][Diff-Hl-Mode]] highlights uncommitted changes on the left side of the
 window, allows to jump between and revert them selectively.
 #+begin_src elisp :tangle init.el
@@ -101,7 +102,7 @@ window, allows to jump between and revert them selectively.
     ;; Perform highlighting on-the-fly.
     (diff-hl-flydiff-mode t))
 #+end_src
-* Load support for language on execution of code block
+** Load support for language on execution of code block
 #+begin_src elisp :tangle init.el
   (defadvice org-babel-execute-src-block (around load-language nil activate)
     "Load language if needed"
@@ -112,7 +113,7 @@ window, allows to jump between and revert them selectively.
       ad-do-it))
 #+end_src
 Source: https://emacs.stackexchange.com/a/20618
-* Ensure environment variables look the same as in the user's shell
+** Ensure environment variables look the same as in the user's shell
 #+begin_src elisp :tangle init.el
   (use-package exec-path-from-shell
     :config
