@@ -143,6 +143,10 @@ Source: https://emacs.stackexchange.com/a/20618
 #+begin_src elisp :tangle init.el
   (setq global-auto-revert-non-file-buffers 1)
 #+end_src
+** Make ~Auto-Revert-Mode~ perform checks every half a second
+#+begin_src elisp :tangle init.el
+  (setq auto-revert-interval 0.5)
+#+end_src
 ** Install Vertico
 #+begin_src elisp :tangle init.el
   (use-package vertico
