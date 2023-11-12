@@ -194,6 +194,14 @@ TAB first tries to indent the current line, and if the line was already indented
 #+begin_src elisp :tangle init.el
   (setq tab-always-indent 'complete)
 #+end_src
+** Install Corfu
+#+begin_src elisp :tangle init.el
+  (use-package corfu
+    :init
+    (global-corfu-mode 1)
+    :custom
+    (completion-cycle-threshold 3))
+#+end_src
 * Android configuration
 ** The configuration script
 :PROPERTIES:
