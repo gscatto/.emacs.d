@@ -143,6 +143,20 @@ Source: https://emacs.stackexchange.com/a/20618
 #+begin_src elisp :tangle init.el
   (setq global-auto-revert-non-file-buffers 1)
 #+end_src
+** Install Vertico
+#+begin_src elisp :tangle init.el
+  (use-package vertico
+    :config
+    (vertico-mode)
+    (vertico-reverse-mode))
+#+end_src
+** Install Orderless
+#+begin_src elisp :tangle init.el
+  (use-package orderless
+    :custom
+    (completion-styles '(orderless basic))
+    (completion-category-overrides '((file (styles basic partial-completion)))))
+#+end_src
 * Android configuration
 ** The configuration script
 :PROPERTIES:
