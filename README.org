@@ -196,15 +196,22 @@ References:
       git clone https://github.com/gscatto/.emacs.d.git
   fi
 #+end_src
-*** Pull the latest changes
+*** Generate configuration update script
 #+begin_src shell
-  : "Did I pull the latest changes?"
-  (cd .emacs.d && git pull --ff-only)
+  : "Did I generate the configuration update script?"
+  if [ ! -f update-emacs-configuration ]; then
+      echo "#!/usr/bin/env bash" > update-emacs-configuration
+      echo "set -euxo pipefail" >> update-emacs-configuration
+      echo "cd .emacs.d" >> update-emacs-configuration
+      echo "git pull --ff-only" >> update-emacs-configuration
+      echo "emacs --batch -Q -l org README.org -f org-babel-tangle" >> update-emacs-configuration
+      chmod +x update-emacs-configuration
+  fi
 #+end_src
-*** Generate the configuration files
+*** Run the configuration update script for the first time
 #+begin_src shell
-  : "Regenerate the configuration files"
-  (cd .emacs.d && emacs --batch -Q -l org README.org -f org-babel-tangle)
+  : "Generate the Emacs configuration"
+  ./update-emacs-configuration
 #+end_src
 ** Remote configuration process
 *** Send the configuration script to the terminal
