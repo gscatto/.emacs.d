@@ -112,3 +112,9 @@ window, allows to jump between and revert them selectively.
       ad-do-it))
 #+end_src
 Source: https://emacs.stackexchange.com/a/20618
+* Ensure environment variables look the same as in the user's shell
+#+begin_src elisp :tangle init.el
+  (use-package exec-path-from-shell
+    :config
+    (exec-path-from-shell-initialize))
+#+end_src
