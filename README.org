@@ -288,7 +288,7 @@ TAB first tries to indent the current line, and if the line was already indented
 	    ("M-r" . consult-history))))
 #+end_src
 ** Install Ace-Jump-Mode
-#+begin_src elisp
+#+begin_src elisp :tangle init.el
   (use-package ace-jump-mode
     :bind (("C-c SPC" . ace-jump-mode)))
 #+end_src
