@@ -220,6 +220,11 @@ TAB first tries to indent the current line, and if the line was already indented
     :config
     (mode-line-bell-mode 1))
 #+end_src
+** In Termux open URLs using default method
+#+begin_src elisp :tangle init.el
+  (when (getenv "TERMUX_VERSION")
+    (setq browse-url-browser-function 'browse-url-xdg-open))
+#+end_src
 ** Configure Org-Mode
 #+begin_src elisp :tangle init.el
   (use-package org
