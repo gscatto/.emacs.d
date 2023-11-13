@@ -218,6 +218,12 @@ TAB first tries to indent the current line, and if the line was already indented
 #+begin_src elisp
   (set-face-attribute 'fringe nil :background "white")
 #+end_src
+** Flash the Emacs mode line instead of ringing the bell
+#+begin_src elisp :tangle init.el
+  (use-package mode-line-bell
+    :config
+    (mode-line-bell-mode 1))
+#+end_src
 ** Configure Org-Mode
 #+begin_src elisp
   (use-package org
