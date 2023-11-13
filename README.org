@@ -287,6 +287,11 @@ TAB first tries to indent the current line, and if the line was already indented
 	    ("M-s" . consult-history)                 ;; orig. next-matching-history-element
 	    ("M-r" . consult-history))))
 #+end_src
+** Install Ace-Jump-Mode
+#+begin_src elisp
+  (use-package ace-jump-mode
+    :bind (("C-c SPC" . ace-jump-mode)))
+#+end_src
 * Android configuration
 ** The configuration script
 :PROPERTIES:
