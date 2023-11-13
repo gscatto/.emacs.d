@@ -374,6 +374,7 @@ References:
       echo "cd .emacs.d" >> update-emacs-configuration
       echo "git pull --ff-only" >> update-emacs-configuration
       echo "emacs --batch -Q -l org README.org -f org-babel-tangle" >> update-emacs-configuration
+      echo "sv restart emacsd" >> update-emacs-configuration
       chmod +x update-emacs-configuration
   fi
 #+end_src
