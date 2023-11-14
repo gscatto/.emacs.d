@@ -396,6 +396,18 @@ References:
       git clone https://github.com/gscatto/.emacs.d.git
   fi
 #+end_src
+*** Install ~termux-services~ package
+#+begin_src shell
+  : "Did I install termux-services package?"
+  if [ ! -f .pkg-install-termux-services ]; then
+      pkg install termux-services -y
+      touch .pkg-install-termux-services
+      : "Restart Termux so that the service-daemon is started"
+      exit
+  fi
+#+end_src
+References:
+- https://wiki.archlinux.org/title/environment_variables
 *** Generate configuration update script
 #+begin_src shell
   : "Did I generate the configuration update script?"
@@ -421,18 +433,6 @@ References:
       echo "export EMACS_SOCKET_NAME=\"$(emacs -Q --batch -l server --eval '(princ (concat server-socket-dir "/server"))')\"" >> .bash_profile
   fi
 #+end_src
-*** Install ~termux-services~ package
-#+begin_src shell
-  : "Did I install termux-services package?"
-  if [ ! -f .pkg-install-termux-services ]; then
-      pkg install termux-services -y
-      touch .pkg-install-termux-services
-      : "Restart Termux so that the service-daemon is started"
-      exit
-  fi
-#+end_src
-References:
-- https://wiki.archlinux.org/title/environment_variables
 *** Enable and run the Emacs daemon service
 #+begin_src shell
   : "Did I enable and run the Emacs daemon service?"
