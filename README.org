@@ -443,6 +443,19 @@ References:
 #+end_src
 References:
 - https://wiki.termux.com/wiki/Termux-services
+*** Copy Git ~user.name~ and ~user.email~ variables
+#+name: git.user.name
+#+begin_src shell :results silent :tangle no
+  git config user.name
+#+end_src
+#+name: git.user.email
+#+begin_src shell :results silent :tangle no
+  git config user.email
+#+end_src
+#+begin_src shell :var NAME=git.user.name EMAIL=git.user.email
+  git config --global user.name "$NAME"
+  git config --global user.email "$EMAIL"
+#+end_src
 ** Remote configuration process
 *** Send the configuration script to the terminal
 #+begin_src shell :results silent
