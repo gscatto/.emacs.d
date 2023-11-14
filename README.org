@@ -368,6 +368,15 @@ References:
       touch .pkg-install-git
   fi
 #+end_src
+*** Install ~git-annex~
+#+begin_src shell
+  : "Did I install git-annex?"
+  if [ ! -f .pkg-install-git-annex ]; then
+      bash <(curl https://git-annex.branchable.com/install/Android/git-annex-install)
+      echo "PATH='\$PATH:`pwd`/git-annex.linux'" >> .bash_profile
+      touch .pkg-install-git-annex
+  fi
+#+end_src
 *** Install Emacs
 #+begin_src shell
   : "Did I install Emacs?"
@@ -400,10 +409,6 @@ References:
 #+begin_src shell
   : "Generate the Emacs configuration"
   ./update-emacs-configuration
-#+end_src
-*** Ensure ~.bash_profile~ exists
-#+begin_src shell
-  touch .bash_profile
 #+end_src
 *** Set the ~EMACS_SOCKET_NAME~ environment variable
 #+begin_src shell
