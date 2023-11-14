@@ -305,6 +305,11 @@ TAB first tries to indent the current line, and if the line was already indented
   (use-package ace-jump-mode
     :bind (("C-c SPC" . ace-jump-mode)))
 #+end_src
+** ~magit-annex~
+https://github.com/magit/magit-annex
+#+begin_src elisp :tangle init.el
+  (use-package magit-annex)
+#+end_src
 * Android configuration
 ** The configuration script
 :PROPERTIES:
