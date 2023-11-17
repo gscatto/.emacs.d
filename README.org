@@ -232,6 +232,10 @@ TAB first tries to indent the current line, and if the line was already indented
     (org-attach-store-link-p 'attached)
     (org-id-link-to-org-use-id t))
 #+end_src
+** Load my custom theme
+#+begin_src elisp :tangle init.el
+  (load-theme 'void t)
+#+end_src
 ** Install Which-Key-Mode
 #+begin_src elisp :tangle init.el
   (use-package which-key
