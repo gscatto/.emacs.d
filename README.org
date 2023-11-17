@@ -443,6 +443,46 @@ References:
 #+end_src
 References:
 - https://wiki.termux.com/wiki/Termux-services
+*** Trust devices for SSH author
+#+name: id_rsa.pub
+#+begin_src shell :results silent :tangle no
+  cat ~/.ssh/id_rsa.pub
+#+end_src
+#+name: whoami
+#+begin_src shell :results silent :tangle no
+  whoami
+#+end_src
+#+name: hostname
+#+begin_src shell :results silent :tangle no
+  hostname
+#+end_src
+#+begin_src shell :var WHOAMI=whoami :var HOSTNAME=hostname :var ID_RSA_PUB=id_rsa.pub
+  if [ ! -f ~/.ssh/authorized_keys ] || ! grep -q "$WHOAMI@$HOSTNAME" ~/.ssh/authorized_keys; then
+      echo "$ID_RSA_PUB" >> ~/.ssh/authorized_keys
+  fi
+#+end_src
+*** Install ~open-ssh~
+#+begin_src shell
+  : "Did I install openssh?"
+  if [ ! -f .pkg-install-openssh ]; then
+      pkg install openssh -y
+      touch .pkg-install-openssh
+  fi
+#+end_src
+*** Generate SSH key
+#+begin_src shell
+  if [ ! -f ~/.ssh/id_rsa.pub ]; then
+      ssh-keygen -t rsa -b 2048 -f ~/.ssh/id_rsa -N ""
+  fi
+#+end_src
+*** Copy key back to the local machine
+#+name: ip
+#+begin_src shell :results silent :tangle no
+  ip -o -f inet addr show | grep wlo1 | sed 's#/# #' | awk '{ print $4 }'
+#+end_src
+#+begin_src shell :var IP=ip :var WHOAMI=whoami
+  ssh-copy-id -i ~/.ssh/id_rsa.pub $WHOAMI@$IP
+#+end_src
 *** Copy Git ~user.name~ and ~user.email~ variables
 #+name: git.user.name
 #+begin_src shell :results silent :tangle no
