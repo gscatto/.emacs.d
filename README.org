@@ -206,14 +206,6 @@ TAB first tries to indent the current line, and if the line was already indented
     :custom
     (completion-cycle-threshold 3))
 #+end_src
-** Make the mode line face inherit ~variable-pitch~
-#+begin_src elisp :tangle init.el
-  (set-face-attribute 'mode-line nil :inherit 'variable-pitch)
-#+end_src
-** Make the fringe white
-#+begin_src elisp :tangle init.el
-  (set-face-attribute 'fringe nil :background "white")
-#+end_src
 ** Flash the Emacs mode line instead of ringing the bell
 #+begin_src elisp :tangle init.el
   (use-package mode-line-bell
@@ -234,9 +226,7 @@ TAB first tries to indent the current line, and if the line was already indented
 	   (org-mode . visual-line-mode))
     :custom
     (org-attach-store-link-p 'attached)
-    (org-id-link-to-org-use-id t)
-    :config
-    (set-face-attribute 'org-block nil :inherit 'fixed-pitch))
+    (org-id-link-to-org-use-id t))
 #+end_src
 ** Install Which-Key-Mode
 #+begin_src elisp :tangle init.el
