@@ -232,7 +232,7 @@ TAB first tries to indent the current line, and if the line was already indented
     (org-id-link-to-org-use-id t))
 #+end_src
 ** Load my custom theme
-#+begin_src elisp :tangle init.el
+#+begin_src elisp :tangle early-init.el
   (load-theme 'void t)
 #+end_src
 ** Install Which-Key-Mode
@@ -240,6 +240,12 @@ TAB first tries to indent the current line, and if the line was already indented
   (use-package which-key
     :config
     (which-key-mode 1))
+#+end_src
+** Install Marginalia
+#+begin_src elisp :tangle init.el
+  (use-package marginalia
+    :config
+    (marginalia-mode 1))
 #+end_src
 ** Install Consult
 #+begin_src elisp :tangle init.el
