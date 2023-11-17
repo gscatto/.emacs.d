@@ -153,16 +153,6 @@ Source: https://emacs.stackexchange.com/a/20618
     :config
     (vertico-mode 1))
  #+end_src
-* Install ~mini-frame-mode~
-#+begin_src elisp :tangle init.el
-  (use-package mini-frame
-    :custom
-    (mini-frame-show-parameters '((top . 0.5)
-				  (width . 0.7)
-				  (left . 0.5)))
-    :config
-    (mini-frame-mode 1))
-#+end_src
 ** Install Orderless
 #+begin_src elisp :tangle init.el
   (use-package orderless
