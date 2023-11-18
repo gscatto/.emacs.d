@@ -24,16 +24,4 @@
 		    (:foreground "#eeffee"))))
  '(minibuffer-prompt ((((background dark)) (:foreground "cyan")) (((type pc)) (:foreground "magenta")) (t (:foreground "medium blue")))))
 
-
-(defun void/decorate-echo-area ()
-  (dolist (buffer-name '(" *Echo Area 0*" " *Echo Area 1*"))
-    (let ((buffer (get-buffer buffer-name)))
-      (when buffer
-	(with-current-buffer buffer
-	  (void/decorate-minibuffer))))))
-(defun void/decorate-minibuffer ()
-  (setq-local face-remapping-alist '((default variable-pitch))))
-;; (add-hook 'echo-area-clear-hook 'void/decorate-echo-area)
-;; (add-hook 'minibuffer-setup-hook 'void/decorate-minibuffer)
-
 (provide-theme 'void)
