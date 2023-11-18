@@ -14,14 +14,8 @@
  '(mode-line-inactive ((t (:inherit mode-line :foreground "grey" :box nil :weight light))))
  '(vertical-border ((t (:foreground "white"))))
  '(diff-hl-change ((t (:foreground "#ddddff" :background "#ddddff"))))
- '(diff-hl-delete ((t
-		    (:foreground "#ffeeee" :inherit
-				 (diff-removed)))))
- '(diff-hl-insert ((default
-		    (:inherit
-		     (diff-added)))
-		   (((class color))
-		    (:foreground "#eeffee"))))
+ '(diff-hl-delete ((t (:foreground "#ffeeee" :inherit (diff-removed)))))
+ '(diff-hl-insert ((default (:inherit (diff-added))) (((class color)) (:foreground "#eeffee"))))
  '(minibuffer-prompt ((((background dark)) (:foreground "cyan")) (((type pc)) (:foreground "magenta")) (t (:foreground "medium blue")))))
 
 (provide-theme 'void)
