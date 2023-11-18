@@ -11,7 +11,7 @@
  '(org-block ((t (:inherit fixed-pitch :extend t))))
  '(fringe ((t nil)))
  '(mode-line ((t (:box (:line-width 8 :color "white") :foreground "black" :background "white" :inherit variable-pitch))))
- '(mode-line-inactive ((t (:inherit mode-line :foreground "grey" :box nil :weight light))))
+ '(mode-line-inactive ((t (:weight light :foreground "grey" :inherit mode-line))))
  '(vertical-border ((t (:foreground "white"))))
  '(diff-hl-change ((t (:foreground "#ddddff" :background "#ddddff"))))
  '(diff-hl-delete ((t (:foreground "#ffeeee" :inherit (diff-removed)))))
