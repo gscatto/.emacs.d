@@ -34,6 +34,19 @@
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
+(use-package org
+  :config
+  ;; Make org-babel to load support for languages when I actually try
+  ;; to run a code block with that language.
+  ;;
+  ;; Source: https://emacs.stackexchange.com/q/20577
+  (defadvice org-babel-execute-src-block (around load-language nil activate)
+    (let ((language (org-element-property :language (org-element-at-point))))
+      (unless (cdr (assoc (intern language) org-babel-load-languages))
+	(add-to-list 'org-babel-load-languages (cons (intern language) t))
+	(org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages))
+      ad-do-it)))
+
 ;; Install Magit, a Git porcelain inside Emacs.
 ;;
 ;; See also https://magit.vc/.
