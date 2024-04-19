@@ -85,7 +85,10 @@
 
   ;; Save customizations other than this initialization file.
   (setq custom-file (concat user-emacs-directory "custom.el"))
-  (load custom-file t))
+  (load custom-file t)
+
+  ;; Avoid creating backup files.
+  (setq make-backup-files nil))
 
 ;; Install Orderless, an Emacs completion style that matches multiple
 ;; regexps in any order. See https://github.com/oantolin/orderless for
