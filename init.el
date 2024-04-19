@@ -217,4 +217,7 @@
   )
 
 ;; Install markdown-mode, a mode for Markdown files.
-(use-package markdown-mode)
+(use-package markdown-mode
+  :init
+  (setq markdown-display-remote-images t
+	markdown-max-image-size '(320 . 240)))
