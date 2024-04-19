@@ -212,3 +212,6 @@
   ;; You may want to use `embark-prefix-help-command' or which-key instead.
   ;; (define-key consult-narrow-map (vconcat consult-narrow-key "?") #'consult-narrow-help)
   )
+
+;; Install markdown-mode, a mode for Markdown files.
+(use-package markdown-mode)
