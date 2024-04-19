@@ -259,3 +259,10 @@
   (magit-post-refresh . diff-hl-magit-post-refresh)
   :config
   (diff-hl-flydiff-mode 1))
+
+;; Make Emacs use the $PATH set up by the user's shell. See
+;; https://github.com/purcell/exec-path-from-shell for more
+;; information.
+(use-package exec-path-from-shell
+  :init
+  (exec-path-from-shell-initialize))
