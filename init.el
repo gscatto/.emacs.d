@@ -229,3 +229,13 @@
   :init
   (setq markdown-display-remote-images t
 	markdown-max-image-size '(320 . 240)))
+
+;; Diff-Hl-Mode highlights uncommitted changes on the left side of the
+;; window. See https://github.com/dgutov/diff-hl for more information.
+(use-package diff-hl
+  :hook
+  ((org-mode prog-mode) . diff-hl-mode)
+  (magit-pre-refresh-hook . diff-hl-magit-pre-refresh)
+  (magit-post-refresh . diff-hl-magit-post-refresh)
+  :config
+  (diff-hl-flydiff-mode 1))
