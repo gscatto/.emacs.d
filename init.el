@@ -101,10 +101,12 @@
   ;; buffers. This setting is useful beyond Vertico.
   (setq read-extended-command-predicate #'command-completion-default-include-p)
 
-  ;; Get a visual signal when the bell rings.
+  ;; Flash the Emacs mode line instead of ringing the bell.
   ;;
-  ;; See also https://www.emacswiki.org/emacs/AlarmBell.
-  (setq visible-bell 1)
+  ;; https://github.com/purcell/mode-line-bell
+  (use-package mode-line-bell
+    :config
+    (mode-line-bell-mode 1))
 
   ;; Save customizations other than this initialization file.
   (setq custom-file (concat user-emacs-directory "custom.el"))
