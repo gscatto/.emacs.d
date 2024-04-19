@@ -91,3 +91,10 @@
   :custom
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
+
+;; Install Marginalia, an Emacs package that adds marginalia to the
+;; minibuffer completions. See https://github.com/minad/marginalia for
+;; more information.
+(use-package marginalia
+  :init
+  (marginalia-mode))
