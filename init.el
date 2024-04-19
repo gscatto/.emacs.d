@@ -37,7 +37,10 @@
 ;; Install Magit, a Git porcelain inside Emacs.
 ;;
 ;; See also https://magit.vc/.
-(use-package magit)
+(use-package magit
+  :config
+  ;; Refresh the status buffer after a buffer is saved.
+  (add-hook 'after-save-hook 'magit-after-save-refresh-status t))
 
 ;; Install vertico.el - VERTical Interactive COmpletion.
 ;;
