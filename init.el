@@ -38,3 +38,8 @@
 ;; system.  See also https://github.com/jwiegley/use-package.
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
+
+;; Install Magit, a Git porcelain inside Emacs.
+;;
+;; See also https://magit.vc/.
+(use-package magit)
