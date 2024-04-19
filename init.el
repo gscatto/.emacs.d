@@ -81,7 +81,11 @@
   ;; Get a visual signal when the bell rings.
   ;;
   ;; See also https://www.emacswiki.org/emacs/AlarmBell.
-  (setq visible-bell 1))
+  (setq visible-bell 1)
+
+  ;; Save customizations other than this initialization file.
+  (setq custom-file (concat user-emacs-directory "custom.el"))
+  (load custom-file t))
 
 ;; Install Orderless, an Emacs completion style that matches multiple
 ;; regexps in any order. See https://github.com/oantolin/orderless for
