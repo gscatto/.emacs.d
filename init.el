@@ -45,7 +45,14 @@
       (unless (cdr (assoc (intern language) org-babel-load-languages))
 	(add-to-list 'org-babel-load-languages (cons (intern language) t))
 	(org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages))
-      ad-do-it)))
+      ad-do-it))
+
+  ;; Org does not prompt the user for confirmation before executing
+  ;; each code block.
+  ;;
+  ;; See https://orgmode.org/manual/Code-Evaluation-Security.html for
+  ;; more information.
+  (setq org-confirm-babel-evaluate nil))
 
 ;; Install Magit, a Git porcelain inside Emacs.
 ;;
