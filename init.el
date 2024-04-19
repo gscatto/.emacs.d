@@ -1,8 +1,3 @@
-;; Get a visual signal when the bell rings.
-;;
-;; See also https://www.emacswiki.org/emacs/AlarmBell.
-(setq visible-bell 1)
-
 ;; Install straight.el, a next-generation, purely functional package
 ;; manager for the Emacs hacker.
 ;;
@@ -81,4 +76,9 @@
   ;; Emacs 28 and newer: Hide commands in M-x which do not work in the
   ;; current mode.  Vertico commands are hidden in normal
   ;; buffers. This setting is useful beyond Vertico.
-  (setq read-extended-command-predicate #'command-completion-default-include-p))
+  (setq read-extended-command-predicate #'command-completion-default-include-p)
+
+  ;; Get a visual signal when the bell rings.
+  ;;
+  ;; See also https://www.emacswiki.org/emacs/AlarmBell.
+  (setq visible-bell 1))
