@@ -216,7 +216,9 @@
   ;; (define-key consult-narrow-map (vconcat consult-narrow-key "?") #'consult-narrow-help)
   )
 
-;; Install markdown-mode, a mode for Markdown files.
+;; Install markdown-mode, a mode for Markdown files. See
+;; https://jblevins.org/projects/markdown-mode/ for an in-depth
+;; explanation of its capabilities.
 (use-package markdown-mode
   :init
   (setq markdown-display-remote-images t
