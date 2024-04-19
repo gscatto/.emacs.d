@@ -266,3 +266,61 @@
 (use-package exec-path-from-shell
   :init
   (exec-path-from-shell-initialize))
+
+;; Remember recently edited files.
+(recentf-mode 1)
+
+;; Prevent using UI dialogs for prompts.
+(setq use-dialog-box nil)
+
+;; Always use "y" or "n" for yes-no responses.
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+;; Automatically revert buffers for changed files.
+(global-auto-revert-mode 1)
+
+;; Automatically revert changed file buffers and custom bufffers
+(setq global-auto-revert-non-file-buffers 1)
+
+;; Auto-Revert-Mode performs checks every half a second.
+(setq auto-revert-interval 0.5)
+
+;; Enable pixel-scroll-precision-mode if present
+(when (fboundp 'pixel-scroll-precision-mode)
+  (pixel-scroll-precision-mode 1))
+
+;; Typed text replaces the active selection.
+(delete-selection-mode 1)
+
+;; Make the cursor a thin bar
+(setq-default cursor-type 'bar)
+
+;; Automatically save place in each file.
+(save-place-mode 1)
+
+;; Install undo-tree, an Emacs package that treats undo history as a
+;; tree.
+;;
+;; https://github.com/emacsmirror/undo-tree/blob/master/undo-tree.el
+(use-package undo-tree
+  :config
+  (global-undo-tree-mode 1)
+  (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo"))))
+
+;; Make TAB intelligent: it tries to indent the current line first and
+;; if the line was already indented, then try to complete the thing at
+;; point.
+(setq tab-always-indent 'complete)
+
+;; Install corfu.el - COmpletion in Region FUnction.
+;;
+;; Corfu enhances in-buffer completion with a small completion
+;; popup. The current candidates are shown in a popup below or above
+;; the point. The candidates can be selected by moving up and down.
+;;
+;; https://github.com/minad/corfu
+(use-package corfu
+  :init
+  (global-corfu-mode 1)
+  :custom
+  (completion-cycle-threshold 3))
