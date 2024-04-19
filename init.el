@@ -326,3 +326,22 @@
   (global-corfu-mode 1)
   :custom
   (completion-cycle-threshold 3))
+
+;; Install which-key, an Emacs package that displays available
+;; keybindings in popup.
+;;
+;; https://github.com/justbur/emacs-which-key
+(use-package which-key
+  :config
+  (which-key-mode 1))
+
+;; Install Ace-Jump-Mode, an Emacs package which helps you to move the
+;; cursor within Emacs by using only 3 times key press.
+;;
+;; https://github.com/winterTTr/ace-jump-mode
+(use-package ace-jump-mode
+  :bind (("C-c SPC" . ace-jump-mode)
+	 ("C-c c" . ace-jump-mode-pop-mark)))
+
+;; https://github.com/magit/magit-annex
+(use-package magit-annex)
