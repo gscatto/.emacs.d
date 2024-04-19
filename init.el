@@ -88,7 +88,10 @@
   (load custom-file t)
 
   ;; Avoid creating backup files.
-  (setq make-backup-files nil))
+  (setq make-backup-files nil)
+
+  ;; Disable the toolbar.
+  (tool-bar-mode -1))
 
 ;; Install Orderless, an Emacs completion style that matches multiple
 ;; regexps in any order. See https://github.com/oantolin/orderless for
