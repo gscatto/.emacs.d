@@ -82,3 +82,12 @@
   ;;
   ;; See also https://www.emacswiki.org/emacs/AlarmBell.
   (setq visible-bell 1))
+
+;; Install Orderless, an Emacs completion style that matches multiple
+;; regexps in any order. See https://github.com/oantolin/orderless for
+;; more information.
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion)))))
