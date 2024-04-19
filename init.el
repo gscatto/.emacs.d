@@ -13,7 +13,7 @@
 ;; Make each use-package form also invoke straight.el to install the
 ;; package, unless otherwise specified.
 (setq straight-use-package-by-default t)
-;;
+
 ;; Install it.
 (defvar bootstrap-version)
 (let ((bootstrap-file
@@ -30,10 +30,10 @@
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
-;;
+
 ;; Install use-package with straight.el.
 (straight-use-package 'use-package)
-;;
+
 ;; Install packages automatically if not already present on our
 ;; system.  See also https://github.com/jwiegley/use-package.
 (require 'use-package-ensure)
