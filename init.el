@@ -91,7 +91,10 @@
   (setq make-backup-files nil)
 
   ;; Disable the toolbar.
-  (tool-bar-mode -1))
+  (tool-bar-mode -1)
+
+  ;; Avoid creating lockfiles.
+  (setq create-lockfiles nil))
 
 ;; Install Orderless, an Emacs completion style that matches multiple
 ;; regexps in any order. See https://github.com/oantolin/orderless for
