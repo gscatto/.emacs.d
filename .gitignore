@@ -1,9 +1,11 @@
 /auto-save-list
 /custom.el
+/eln-cache
 /history
 /places
 /projects
 /recentf
 /straight
+/tramp
 /transient
 /undo
