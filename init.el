@@ -260,6 +260,7 @@
   (magit-pre-refresh-hook . diff-hl-magit-pre-refresh)
   (magit-post-refresh . diff-hl-magit-post-refresh)
   :config
+  (global-diff-hl-mode 1)
   (diff-hl-flydiff-mode 1))
 
 ;; Make Emacs use the $PATH set up by the user's shell. See
