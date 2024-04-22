@@ -364,3 +364,8 @@ nothing happens."
     (progn  (make-local-variable 'after-save-hook)
         (add-hook 'after-save-hook 'compile-on-save-start nil t))
       (kill-local-variable 'after-save-hook)))
+
+;; Emacs major mode for the Meson build system.
+;;
+;; https://github.com/wentasah/meson-mode
+(use-package meson-mode)
