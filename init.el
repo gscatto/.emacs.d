@@ -369,3 +369,8 @@ nothing happens."
 ;;
 ;; https://github.com/wentasah/meson-mode
 (use-package meson-mode)
+
+;; A PlantUML major mode for Emacs.
+;;
+;; https://github.com/skuro/plantuml-mode
+(use-package plantuml-mode)
