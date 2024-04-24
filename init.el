@@ -374,3 +374,7 @@ nothing happens."
 ;;
 ;; https://github.com/skuro/plantuml-mode
 (use-package plantuml-mode)
+
+;; https://stackoverflow.com/a/71785402/10750781
+(use-package ansi-color
+    :hook (compilation-filter . ansi-color-compilation-filter))
