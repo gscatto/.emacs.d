@@ -328,6 +328,16 @@
   :custom
   (completion-cycle-threshold 3))
 
+;; Make Corfu available on terminal.
+;;
+;; https://codeberg.org/akib/emacs-corfu-terminal
+(use-package corfu-terminal
+  :straight (corfu-terminal :type git
+                            :repo "https://codeberg.org/akib/emacs-corfu-terminal"
+  :config
+  (unless (display-graphic-p)
+    (corfu-terminal-mode 1))))
+
 ;; Install which-key, an Emacs package that displays available
 ;; keybindings in popup.
 ;;
