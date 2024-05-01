@@ -388,3 +388,6 @@ nothing happens."
 ;; https://stackoverflow.com/a/71785402/10750781
 (use-package ansi-color
     :hook (compilation-filter . ansi-color-compilation-filter))
+
+;; https://github.com/jorgenschaefer/pyvenv
+(use-package pyvenv)
