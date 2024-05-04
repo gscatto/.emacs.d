@@ -391,3 +391,10 @@ nothing happens."
 
 ;; https://github.com/jorgenschaefer/pyvenv
 (use-package pyvenv)
+
+;; A Singularity recipe mode for Emacs.
+;;
+;; https://github.com/karljohanw/singularity-mode
+(use-package singularity-mode
+  :straight (singularity-mode :type git
+			      :repo "https://github.com/karljohanw/singularity-mode"))
