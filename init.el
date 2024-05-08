@@ -391,3 +391,9 @@ nothing happens."
 
 ;; https://github.com/jorgenschaefer/pyvenv
 (use-package pyvenv)
+
+;; On macOS remap the Command key to Control.
+;;
+;; https://www.reddit.com/r/emacs/comments/isl1s5/remapping_the_command_key_on_macos_to_ctrl/
+(when (eq system-type 'darwin)
+  (setq mac-command-modifier 'control))
