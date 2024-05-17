@@ -398,6 +398,11 @@ nothing happens."
 (when (eq system-type 'darwin)
   (setq mac-command-modifier 'control))
 
+(defun gs/embark-duckduckgo-search (term)
+    (interactive "Cerca su DuckDuckGo: ")
+    (browse-url
+     (format "https://duckduckgo.com/?q=%s" term)))
+
 ;; https://github.com/oantolin/embark
 (use-package embark
   :ensure t
@@ -405,7 +410,9 @@ nothing happens."
   :bind
   (("C-." . embark-act)         ;; pick some comfortable binding
    ("C-;" . embark-dwim)        ;; good alternative: M-.
-   ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
+   ("C-h B" . embark-bindings)  ;; alternative for `describe-bindings'
+   :map embark-general-map
+   ("D" . gs/embark-duckduckgo-search))
 
   :init
 
