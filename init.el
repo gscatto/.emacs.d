@@ -441,3 +441,35 @@ nothing happens."
   :ensure t ; only need to install it, embark loads it after consult if found
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
+
+;; https://protesilaos.com/emacs/denote
+(use-package denote
+  :hook (find-file . denote-link-buttonize-buffer)
+  :bind (("C-c n n" . denote)
+	 ("C-c n c" . denote-region) ; "contents" mnemonic
+	 ("C-c n N" . denote-type)
+	 ("C-c n d" . denote-date)
+	 ("C-c n z" . denote-signature) ; "zettelkasten" mnemonic
+	 ("C-c n s" . denote-subdirectory)
+	 ("C-c n t" . denote-template)
+	 ;; If you intend to use Denote with a variety of file types, it is
+	 ;; easier to bind the link-related commands to the `global-map', as
+	 ;; shown here.  Otherwise follow the same pattern for `org-mode-map',
+	 ;; `markdown-mode-map', and/or `text-mode-map'.
+	 ("C-c n i" . denote-link-or-create) ;; "insert" mnemonic
+	 ("C-c n I" . denote-add-links)
+	 ("C-c n b" . denote-backlinks)
+	 ("C-c n f f" . denote-find-link)
+	 ("C-c n f b" . denote-find-backlink)
+	 ; Note that `denote-rename-file' can work from any context, not just
+	 ;; Dired bufffers.  That is why we bind it here to the `global-map'.
+	 ("C-c n r" . denote-rename-file)
+	 ("C-c n R" . denote-rename-file-using-front-matter)
+	 ("C-c n Z" . denote-rename-file-signature)
+	 :map dired-mode-map
+	 ("C-c C-d i" . denote-link-dired-marked-notes)
+	 ("C-c C-d r" . denote-dired-rename-files)
+	 ("C-c C-d k" . denote-dired-rename-marked-files-with-keywords)
+	 ("C-c C-d R" . denote-dired-rename-marked-files-using-front-matter))
+  :config
+  (denote-rename-buffer-mode t))
