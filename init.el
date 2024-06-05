@@ -473,3 +473,10 @@ nothing happens."
 	 ("C-c C-d R" . denote-dired-rename-marked-files-using-front-matter))
   :config
   (denote-rename-buffer-mode t))
+
+;; https://github.com/MirkoHernandez/denote-folgezettel
+(use-package denote-fz
+  :straight (denote-fz :type git
+		       :repo "https://github.com/MirkoHernandez/denote-folgezettel")
+  :config
+  (define-key denote-fz-mode-map (kbd "C-c z") denote-fz-command-map))
