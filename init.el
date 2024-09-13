@@ -76,11 +76,13 @@
 
 (use-package seq :ensure `(seq :build ,(+elpaca-seq-build-steps)))
 
+;; Always ensure package are installed.
+(setq use-package-always-ensure t)
+
 ;; Install Magit, a Git porcelain inside Emacs.
 ;;
 ;; See also https://magit.vc/.
 (use-package magit
-  :ensure t
   :after seq
   :config
   ;; Refresh the status buffer after a buffer is saved.
@@ -90,7 +92,6 @@
 ;;
 ;; See also https://github.com/minad/vertico.
 (use-package vertico
-  :ensure t
   :init
   (vertico-mode))
 
@@ -98,7 +99,6 @@
 ;; regexps in any order. See https://github.com/oantolin/orderless for
 ;; more information.
 (use-package orderless
-  :ensure t
   :custom
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
@@ -107,14 +107,12 @@
 ;; minibuffer completions. See https://github.com/minad/marginalia for
 ;; more information.
 (use-package marginalia
-  :ensure t
   :init
   (marginalia-mode))
 
 ;; Install consult.el - Consulting completing-read. See also
 ;; https://github.com/minad/consult for more information.
 (use-package consult
-  :ensure t
   ;; Replace bindings. Lazily loaded due by `use-package'.
   :bind (;; C-c bindings in `mode-specific-map'
          ("C-c M-x" . consult-mode-command)
@@ -235,7 +233,6 @@
 ;; Diff-Hl-Mode highlights uncommitted changes on the left side of the
 ;; window. See https://github.com/dgutov/diff-hl for more information.
 (use-package diff-hl
-  :ensure t
   :hook
   ((org-mode prog-mode) . diff-hl-mode)
   (magit-pre-refresh-hook . diff-hl-magit-pre-refresh)
@@ -248,7 +245,6 @@
 ;; https://github.com/purcell/exec-path-from-shell for more
 ;; information.
 (use-package exec-path-from-shell
-  :ensure t
   :init
   (exec-path-from-shell-initialize))
 
@@ -284,7 +280,6 @@
 ;;
 ;; https://github.com/emacsmirror/undo-tree/blob/master/undo-tree.el
 (use-package undo-tree
-  :ensure t
   :config
   (global-undo-tree-mode 1)
   (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo"))))
@@ -302,7 +297,6 @@
 ;;
 ;; https://github.com/minad/corfu
 (use-package corfu
-  :ensure t
   :init
   (global-corfu-mode 1)
   :custom
@@ -313,7 +307,6 @@
 ;;
 ;; https://github.com/justbur/emacs-which-key
 (use-package which-key
-  :ensure t
   :config
   (which-key-mode 1))
 
@@ -322,7 +315,6 @@
 ;;
 ;; https://protesilaos.com/emacs/denote
 (use-package denote
-  :ensure t
   :bind (("C-c n n" . denote-open-or-create)
 	 ("C-c n c" . denote-region)
 	 ("C-c n N" . denote-type)
@@ -364,14 +356,12 @@ nothing happens."
 ;; Emacs major mode for the Meson build system.
 ;;
 ;; https://github.com/wentasah/meson-mode
-(use-package meson-mode
-  :ensure t)
+(use-package meson-mode)
 
 ;; A PlantUML major mode for Emacs.
 ;;
 ;; https://github.com/skuro/plantuml-mode
-(use-package plantuml-mode
-  :ensure t)
+(use-package plantuml-mode)
 
 ;; https://stackoverflow.com/a/71785402/10750781
 (use-package ansi-color
