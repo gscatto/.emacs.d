@@ -322,7 +322,26 @@
 ;;
 ;; https://protesilaos.com/emacs/denote
 (use-package denote
-  :ensure t)
+  :ensure t
+  :bind (("C-c n n" . denote-open-or-create)
+	 ("C-c n c" . denote-region)
+	 ("C-c n N" . denote-type)
+	 ("C-c n d" . denote-date)
+	 ("C-c n z" . denote-signature)
+	 ("C-c n s" . denote-subdirectory)
+	 ("C-c n t" . denote-template)
+	 ("C-c n i" . denote-link-or-create)
+	 ("C-c n I" . denote-add-links)
+	 ("C-c n b" . denote-backlinks)
+	 ("C-c n f f" . denote-find-link)
+	 ("C-c n f b" . denote-find-backlink)
+	 ("C-c n r" . denote-rename-file)
+	 ("C-c n R" . denote-rename-file-using-front-matter)
+	 (:map dired-mode-map
+	       ("C-c C-d C-i" . denote-link-dired-marked-notes)
+	       ("C-c C-d C-r" . denote-dired-rename-files)
+	       ("C-c C-d C-k" . denote-dired-rename-marked-files-with-keywords)
+	       ("C-c C-d C-R" . denote-dired-rename-marked-files-using-front-matter))))
 
 ;; "Compile on save" in Emacs.
 ;;
