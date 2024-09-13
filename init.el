@@ -383,3 +383,6 @@ nothing happens."
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
+
+;; Activate variable-pitch-mode in Org files
+(add-hook 'org-mode-hook 'variable-pitch-mode)
