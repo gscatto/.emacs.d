@@ -74,7 +74,7 @@
                        elpaca--pre-built-steps elpaca-build-steps))
           (list '+elpaca-unload-seq 'elpaca--activate-package)))
 
-(use-package seq :elpaca `(seq :build ,(+elpaca-seq-build-steps)))
+(use-package seq :ensure `(seq :build ,(+elpaca-seq-build-steps)))
 
 ;; Install Magit, a Git porcelain inside Emacs.
 ;;
