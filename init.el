@@ -7,13 +7,6 @@
  '(ns-command-modifier 'control)
  '(ns-right-command-modifier 'control))
 
-;; Save customization in a dedicated file.
-(setq custom-file (concat user-emacs-directory "custom.el"))
-
-;; Load customization if the file exists.
-(when (file-exists-p custom-file)
-  (load custom-file nil t))
-
 ;; Install Elpaca, a package manager for Emacs.
 ;; https://github.com/progfolio/elpaca
 (defvar elpaca-installer-version 0.7)
@@ -57,8 +50,15 @@
 
 ;; Install use-package support
 (elpaca elpaca-use-package
-  ;; Enable use-package :ensure support for Elpaca.
-  (elpaca-use-package-mode))
+	;; Enable use-package :ensure support for Elpaca.
+	(elpaca-use-package-mode))
+
+;; Save customization in a dedicated file.
+(setq custom-file (concat user-emacs-directory "custom.el"))
+
+;; Load customization if the file exists.
+(when (file-exists-p custom-file)
+  (load custom-file nil t))
 
 ;; In GNU Emacs 29.0.50, Magit is asking for a seq version newer than
 ;; what Emacs ships. This unloads seq in order to reinstall the
