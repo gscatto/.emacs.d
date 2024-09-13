@@ -107,6 +107,7 @@
 ;; minibuffer completions. See https://github.com/minad/marginalia for
 ;; more information.
 (use-package marginalia
+  :ensure t
   :init
   (marginalia-mode))
 
@@ -217,3 +218,10 @@
   ;; You may want to use `embark-prefix-help-command' or which-key instead.
   ;; (define-key consult-narrow-map (vconcat consult-narrow-key "?") #'consult-narrow-help)
   )
+
+;; Install Denote, simple notes for Emacs with an efficient
+;; file-naming scheme.
+;;
+;; https://protesilaos.com/emacs/denote
+(use-package denote
+  :ensure t)
