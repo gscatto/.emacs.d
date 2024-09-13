@@ -376,3 +376,10 @@ nothing happens."
 ;; https://stackoverflow.com/a/71785402/10750781
 (use-package ansi-color
     :hook (compilation-filter . ansi-color-compilation-filter))
+
+;; Place backup and auto-save files in the system's temporary
+;; directory.
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
