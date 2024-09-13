@@ -219,9 +219,141 @@
   ;; (define-key consult-narrow-map (vconcat consult-narrow-key "?") #'consult-narrow-help)
   )
 
+;; Persist history over Emacs restarts.
+(use-package savehist
+  :init
+  (savehist-mode))
+
+;; Install markdown-mode, a mode for Markdown files. See
+;; https://jblevins.org/projects/markdown-mode/ for an in-depth
+;; explanation of its capabilities.
+(use-package markdown-mode
+  :init
+  (setq markdown-display-remote-images t
+	markdown-max-image-size '(320 . 240)))
+
+;; Diff-Hl-Mode highlights uncommitted changes on the left side of the
+;; window. See https://github.com/dgutov/diff-hl for more information.
+(use-package diff-hl
+  :ensure t
+  :hook
+  ((org-mode prog-mode) . diff-hl-mode)
+  (magit-pre-refresh-hook . diff-hl-magit-pre-refresh)
+  (magit-post-refresh . diff-hl-magit-post-refresh)
+  :config
+  (global-diff-hl-mode 1)
+  (diff-hl-flydiff-mode 1))
+
+;; Make Emacs use the $PATH set up by the user's shell. See
+;; https://github.com/purcell/exec-path-from-shell for more
+;; information.
+(use-package exec-path-from-shell
+  :ensure t
+  :init
+  (exec-path-from-shell-initialize))
+
+;; Remember recently edited files.
+(recentf-mode 1)
+
+;; Prevent using UI dialogs for prompts.
+(setq use-dialog-box nil)
+
+;; Always use "y" or "n" for yes-no responses.
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+;; Automatically revert buffers for changed files.
+(global-auto-revert-mode 1)
+
+;; Automatically revert changed file buffers and custom bufffers
+(setq global-auto-revert-non-file-buffers 1)
+
+;; Auto-Revert-Mode performs checks every half a second.
+(setq auto-revert-interval 0.5)
+
+;; Typed text replaces the active selection.
+(delete-selection-mode 1)
+
+;; Make the cursor a thin bar
+(setq-default cursor-type 'bar)
+
+;; Automatically save place in each file.
+(save-place-mode 1)
+
+;; Install undo-tree, an Emacs package that treats undo history as a
+;; tree.
+;;
+;; https://github.com/emacsmirror/undo-tree/blob/master/undo-tree.el
+(use-package undo-tree
+  :ensure t
+  :config
+  (global-undo-tree-mode 1)
+  (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo"))))
+
+;; Make TAB intelligent: it tries to indent the current line first and
+;; if the line was already indented, then try to complete the thing at
+;; point.
+(setq tab-always-indent 'complete)
+
+;; Install corfu.el - COmpletion in Region FUnction.
+;;
+;; Corfu enhances in-buffer completion with a small completion
+;; popup. The current candidates are shown in a popup below or above
+;; the point. The candidates can be selected by moving up and down.
+;;
+;; https://github.com/minad/corfu
+(use-package corfu
+  :ensure t
+  :init
+  (global-corfu-mode 1)
+  :custom
+  (completion-cycle-threshold 3))
+
+;; Install which-key, an Emacs package that displays available
+;; keybindings in popup.
+;;
+;; https://github.com/justbur/emacs-which-key
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode 1))
+
 ;; Install Denote, simple notes for Emacs with an efficient
 ;; file-naming scheme.
 ;;
 ;; https://protesilaos.com/emacs/denote
 (use-package denote
   :ensure t)
+
+;; "Compile on save" in Emacs.
+;;
+;; https://rtime.ciirc.cvut.cz/~sojka/blog/compile-on-save/
+(defun compile-on-save-start ()
+  (let ((buffer (compilation-find-buffer)))
+    (unless (get-buffer-process buffer)
+      (recompile))))
+
+(define-minor-mode compile-on-save-mode
+  "Minor mode to automatically call `recompile' whenever the
+current buffer is saved. When there is ongoing compilation,
+nothing happens."
+  :lighter " CoS"
+  (if compile-on-save-mode
+      (progn  (make-local-variable 'after-save-hook)
+              (add-hook 'after-save-hook 'compile-on-save-start nil t))
+    (kill-local-variable 'after-save-hook)))
+
+;; Emacs major mode for the Meson build system.
+;;
+;; https://github.com/wentasah/meson-mode
+(use-package meson-mode
+  :ensure t)
+
+;; A PlantUML major mode for Emacs.
+;;
+;; https://github.com/skuro/plantuml-mode
+(use-package plantuml-mode
+  :ensure t)
+
+;; https://stackoverflow.com/a/71785402/10750781
+(use-package ansi-color
+    :hook (compilation-filter . ansi-color-compilation-filter))
