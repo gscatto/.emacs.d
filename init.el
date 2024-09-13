@@ -59,3 +59,30 @@
 (elpaca elpaca-use-package
   ;; Enable use-package :ensure support for Elpaca.
   (elpaca-use-package-mode))
+
+;; In GNU Emacs 29.0.50, Magit is asking for a seq version newer than
+;; what Emacs ships. This unloads seq in order to reinstall the
+;; upgraded version without causing warnings.
+;;
+;; https://www.reddit.com/r/emacs/comments/1937vaz/comment/kh8vxhb
+(defun +elpaca-unload-seq (e)
+  (and (featurep 'seq) (unload-feature 'seq t))
+  (elpaca--continue-build e))
+
+(defun +elpaca-seq-build-steps ()
+  (append (butlast (if (file-exists-p (expand-file-name "seq" elpaca-builds-directory))
+                       elpaca--pre-built-steps elpaca-build-steps))
+          (list '+elpaca-unload-seq 'elpaca--activate-package)))
+
+(use-package seq :elpaca `(seq :build ,(+elpaca-seq-build-steps)))
+
+;; Install Magit, a Git porcelain inside Emacs.
+;;
+;; See also https://magit.vc/.
+(use-package magit
+  :ensure t
+  :demand t
+  :after seq
+  :config
+  ;; Refresh the status buffer after a buffer is saved.
+  (add-hook 'after-save-hook 'magit-after-save-refresh-status t))
