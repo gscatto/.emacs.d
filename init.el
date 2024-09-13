@@ -218,9 +218,7 @@
   )
 
 ;; Persist history over Emacs restarts.
-(use-package savehist
-  :init
-  (savehist-mode))
+(savehist-mode +1)
 
 ;; Install markdown-mode, a mode for Markdown files. See
 ;; https://jblevins.org/projects/markdown-mode/ for an in-depth
@@ -365,7 +363,8 @@ nothing happens."
 
 ;; https://stackoverflow.com/a/71785402/10750781
 (use-package ansi-color
-    :hook (compilation-filter . ansi-color-compilation-filter))
+  :ensure nil
+  :hook (compilation-filter . ansi-color-compilation-filter))
 
 ;; Place backup and auto-save files in the system's temporary
 ;; directory.
