@@ -6,3 +6,10 @@
  '(ns-right-alternate-modifier 'meta) 
  '(ns-command-modifier 'control)
  '(ns-right-command-modifier 'control))
+
+;; Save customization in a dedicated file.
+(setq custom-file (concat user-emacs-directory "custom.el"))
+
+;; Load customization if the file exists.
+(when (file-exists-p custom-file)
+  (load custom-file nil t))
